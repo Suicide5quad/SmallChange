@@ -6,86 +6,89 @@
 ***********************************************************************************/
 
 /* Your CSS goes here: */
-div {
-    max-width: 62.5em;
+a {
+  font-family: "Fidelity Sans", "Arial", "sans-serif";
+  font-size: 32px;
+  line-height: 1.5em;
+  text-decoration: none;
+  box-sizing: content-box;
+  padding: 0.5rem 1rem;
+  color: #356f95;
+}
+a:hover {
+  color: #000;
+}
+a:visited {
+  color: #5c0198;
+}
+a:focus {
+  border: 1px dotted #cccccc;
+}
+ul {
+  margin-top: 0rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5em 1em;
+  display: block;
+  background-color: #f2f2f2;
+  list-style-type: none;
+}
+li {
+  margin: 0em 1em;
+  padding: 0em;
+  display: inline-block;
+}
+.topnav .icon {
+  display: none;
+}
+.responsive .icon {
+  display: none;
+}
+
+
+
+@media screen and (max-width: 720px) {
+  .topnav ul {
+    padding: 2rem;
   }
-  
-  a:hover {
-    color: #000;
+  .topnav li {
+    display: none;
   }
-  a:visited {
-    color: #5c0198;
-  }
-  a:focus {
-    border: 1px dotted #cccccc;
-  }
-  
-  
-  a {
-    float: left; 
-    margin: 1rem 0rem 1rem 1rem;
-    font-family: "Fidelity Sans", "Arial", "sans-serif";
-    font-size: 18px;
-    line-height: 1.5em;
-    text-decoration: none;
-    box-sizing: content-box;
-    padding: 0.5rem 1rem;
-    color: #356f95;
-  }
-  
-  ul {
-    margin-top: 0rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0.5em 1em;
+  .topnav a.icon {
     display: block;
-    background-color: #f2f2f2;
-    list-style-type: none;
+    margin: 1rem;
   }
-  
-  li {
-    margin: 0em 1em;
-    padding: 0em;
-    display: inline-block;
+  .responsive a.icon {
+    display: block;
+    margin: 1rem;
   }
-  
-  .topnav .icon {
+  .responsive li {
     display: none;
-    text-decoration: none;
   }
-  .responsive .icon {
-    display: none;
-    text-decoration: none;
+}
+
+
+@media screen and (max-width: 720px) {
+  .topnav.responsive {
+    position: relative;
   }
-  
-  @media screen and (max-width: 720px) {
-    .topnav ul {
-      padding: 2rem;
-    }
-    .topnav li {
-      display: none;
-    }
-    .topnav a.icon {
-      display: block;
-    }
-    .responsive a.icon {
-      display: block;
-    }
-    .responsive li {
-      display: block;
-    }
-  
-    .topnav.responsive ul {
-      float: none;
-      text-align: left;
-    }
-  
-    .topnav.responsive {
-      float: none;
-      display: block;
-      width: 100%;
-      text-align: left;
-      position: relative;
-    }
+  .responsive li {
+    display: block;
   }
+  .topnav.responsive ul {
+    float: none;
+    text-align: left;
+  }
+  .topnav.responsive {
+    float: none;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
   

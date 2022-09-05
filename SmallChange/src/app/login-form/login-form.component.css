@@ -75,6 +75,7 @@ div#id {
   line-height: 1.5em;
   color: #000;
   font-size: 32px;
+  text-align: center;
 }
 pre {
   box-sizing: content-box;
@@ -84,4 +85,5 @@ pre {
   line-height: 1.5em;
   color: #000;
   font-size: 18px;
+  text-align: center;
 }
