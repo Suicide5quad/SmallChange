@@ -67,3 +67,21 @@ div#id {
   color: #024a7a;
   font-family: "Fidelity Sans", "Arial", "sans-serif";
 }
+#login {
+  box-sizing: content-box;
+  font-family: "Fidelity Sans", "Arial", "sans-serif";
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+  color: #000;
+  font-size: 32px;
+}
+pre {
+  box-sizing: content-box;
+  font-family: "Fidelity Sans", "Arial", "sans-serif";
+  margin: 0;
+  padding: 0;
+  line-height: 1.5em;
+  color: #000;
+  font-size: 18px;
+}
