@@ -1,0 +1,14 @@
+div {
+    max-width: 62.5em;
+    background-color: transparent;
+}
+
+p {
+    font-family: "Fidelity Sans", "Arial", "san-serif";
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5rem 1rem;
+    color: #000;
+    line-height: 1.5em;
+    display: block;
+}
