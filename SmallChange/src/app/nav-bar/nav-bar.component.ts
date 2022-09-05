@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
   constructor() { }
+  show: Boolean = true;
 
   ngOnInit(): void {
   }
