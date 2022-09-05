@@ -1,6 +1,6 @@
 div {
     background-color: transparent;
-    text-align: center;
+    text-align: left;
     position: fixed; 
     bottom: 0; 
     width: 100%;
@@ -12,7 +12,7 @@ p {
     margin-right: auto;
     padding: 0.5rem 1rem;
     color: #000;
-    line-height: 1.5em;
+    line-height: 0em;
     display: block;
 
 }
