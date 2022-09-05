@@ -1,8 +1,10 @@
 <div id="login">Login Page</div>
-<pre>Did you know that SmallChange&trade; has no investment fees on portfolios with balances under 
-        $5,000? After that, only a 0.25% fee applies monthly.</pre>
-<br><br>
-<form action="GET" class="form">
+<pre>
+Did you know that SmallChange&trade; has no investment fees on portfolios with balances under 
+        $5,000? After that, only a 0.25% fee applies monthly.</pre
+>
+<br /><br />
+<div class="form">
   <div class="form-group">
     <label for="username" class="label">Username</label>
   </div>
@@ -20,7 +22,7 @@
       hyphens.
     </p>
   </div>
-  <br>
+  <br />
   <div class="form-group">
     <label for="password" class="label">Password</label>
   </div>
@@ -38,7 +40,9 @@
       underscores or hyphens
     </p>
   </div>
-  <br>
-  <div class="form-group"><button type="submit">Login</button></div>
+  <br />
+  <div class="form-group">
+    <button type="submit" (click)="login()">Login</button>
+  </div>
   <div id="link"><a href="#">Forgot your password?</a></div>
-</form>
+</div>
