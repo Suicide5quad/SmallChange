@@ -1,1 +1,34 @@
-<p>login-form works!</p>
+<form action="GET" class="form">
+  <div class="form-group"><label for="username" class="label">Username</label></div>
+  <div class="form-group">
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Enter your username"
+    />
+  </div>
+  <div>
+    <p class="error" id="errorText">
+      Invalid Username - Must contain 3 and 18 letters, numbers, underscores or
+      hyphens.
+    </p>
+  </div>
+  <div class="form-group"><label for="password" class="label">Password</label></div>
+  <div class="form-group">
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Enter the password"
+    />
+  </div>
+  <div>
+    <p class="error" id="errorTextPass">
+      Invalid password - Must contain between 6 and 24 letters, numbers,
+      underscores or hyphens
+    </p>
+  </div>
+  <div class="form-group"><button type="submit">Login</button></div>
+  <div id="link"><a href="#">Forgot your password?</a></div>
+</form>
