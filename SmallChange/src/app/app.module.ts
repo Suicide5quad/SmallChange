@@ -25,10 +25,15 @@ import { SellTradeComponent } from './trades/sell-trade/sell-trade.component';
     FooterComponent,
     HomePageComponent,
     PortfolioPageComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule,
     BuyTradeComponent,
     SellTradeComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+
     FormsModule,
     ReactiveFormsModule,
   ],
