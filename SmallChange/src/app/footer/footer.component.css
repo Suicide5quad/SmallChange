@@ -1,7 +1,7 @@
 div {
     background-color: transparent;
-    text-align: left;
-    position: fixed; 
+    text-align: center;
+    position: relative; 
     bottom: 0; 
     width: 100%;
 }
