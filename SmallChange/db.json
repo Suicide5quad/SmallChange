@@ -1,0 +1,26 @@
+{
+  "buy": [
+    {
+      "assetClass": "STOCK",
+      "security": "JPMorgan Chase & Co. Capital Stock",
+      "quantity": 10,
+      "accNumber": "Acc1",
+      "id": 1
+    },
+    {
+      "assetClass": "STOCK",
+      "security": "JPMorgan Chase & Co. Capital Stock",
+      "quantity": 100,
+      "accNumber": "Acc1",
+      "id": 2
+    }
+  ],
+  "sell": [
+    {
+      "security": "stock2",
+      "quantity": 100,
+      "accNumber": "Acc2",
+      "id": 1
+    }
+  ]
+}
