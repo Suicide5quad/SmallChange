@@ -3,7 +3,7 @@ export class Prices {
   constructor(
     public askPrice: number,
     public bidPrice: number,
-    public priceTimestamp: Date,
+    public priceTimestamp: string,
     public instrument: Instruments
   ) {}
 }
