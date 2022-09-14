@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'Home', component: HomePageComponent },
   { path: 'Login', component: LoginPageComponent },
   { path: 'Portfolio', component: PortfolioPageComponent},
+  { path: 'Portfolio', component: PortfolioPageComponent},
   { path: '', redirectTo: '/Home', pathMatch: 'full' }
 
 ];

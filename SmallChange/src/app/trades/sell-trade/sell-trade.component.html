@@ -1,0 +1,56 @@
+<div class="container">
+  <div *ngIf="!submitted && cashOnHand && cashPower">
+    <h1>Place a Sell Trade</h1>
+    <form (ngSubmit)="onSubmit()" #sellForm="ngForm">
+      <div class="form-group">
+        <label for="security">Security</label>
+        <select
+          class="form-select"
+          name="security"
+          #name="ngModel"
+          [(ngModel)]="security"
+          required
+        >
+          <option value="stock1" selected>stock1</option>
+          <option value="stock2">stock2</option>
+          <option value="stock3">stock3</option>
+          <option value="stock4">stock4</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="Quantity">Quantity</label>
+        <input
+          type="number"
+          class="form-control"
+          name="Quantity"
+          #name="ngModel"
+          [(ngModel)]="Quantity"
+          min="1"
+          max="100"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="AccountNumber">Account Number</label>
+        <select
+          class="form-select"
+          name="AccountNumber"
+          #name="ngModel"
+          [(ngModel)]="AccountNumber"
+          required
+        >
+          <option value="Acc1" selected>Acc1</option>
+          <option value="Acc2">Acc2</option>
+        </select>
+      </div>
+      <br />
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!sellForm.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

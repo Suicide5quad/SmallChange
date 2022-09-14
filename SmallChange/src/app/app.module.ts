@@ -11,6 +11,9 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PortfolioPageComponent } from './portfolio/portfolio-page/portfolio-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SellTradeComponent } from './trades/sell-trade/sell-trade.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomePageComponent,
     PortfolioPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule,
+    BuyTradeComponent,
+    SellTradeComponent,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
