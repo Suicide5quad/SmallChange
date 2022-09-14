@@ -21,9 +21,10 @@ describe('PortfolioPageComponent', () => {
       ],
       "portfolio_balance":100000}
   ]
-
+  let stockspy:null;
   MockPortfolioService=jasmine.createSpyObj('PortfolioService',['getPortfolioData']);
-  MockPortfolioService.getPortfolioData.and.returnValue(of(mockportfolio));
+  stockspy=MockPortfolioService.getPortfolioData.and.returnValue(of(mockportfolio));
+
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -44,6 +45,22 @@ describe('PortfolioPageComponent', () => {
 
   it('should reflect portfolio text', () => {
     expect(fixture.debugElement.nativeElement.querySelector('h2').textContent) // Testing the contentof h1 tag
-.toContain('Portfolio');
+.toContain('$ 244,518.76');
 });
+it('should reflect Total Investment Text', () => {
+  expect(fixture.debugElement.nativeElement.querySelector('h5').textContent) // Testing the contentof h1 tag
+.toContain('Total Investment');
+});
+
+it('should return right table content',()=>{
+  const compiled = fixture.debugElement.nativeElement;
+    const table = compiled.querySelector('table table');
+  expect(table.rows[1].cells[1].textContent).toBe('APL');
+})
+
+it('should call the portfolio service to fetch the data', () => {
+  component.getUserPortfolioData();
+  expect(stockspy).toHaveBeenCalled(); 
+});
+
 });

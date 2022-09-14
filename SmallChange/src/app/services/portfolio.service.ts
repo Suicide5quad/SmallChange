@@ -35,7 +35,7 @@ export class PortfolioService {
   }
 
  
-  private handleError(err:HttpErrorResponse)
+   handleError(err:HttpErrorResponse)
 
   {
     let errorMessage='';
