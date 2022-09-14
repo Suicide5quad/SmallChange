@@ -1,0 +1,13 @@
+div {
+    box-sizing: content-box;
+    background-color: #568200;
+    color: #fff;
+    font-family: "Fidelity Sans", "Arial", "sans-serif";
+    font-size: 32px;
+    line-height: 1.5em;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0.5em 1em 0.5em 1em;
+    max-width: 62.5em;
+  }
+  
