@@ -8,6 +8,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { PortfolioPageComponent } from './portfolio/portfolio-page/portfolio-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     NavBarComponent,
     HeaderComponent,
     FooterComponent,
+    PortfolioPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
