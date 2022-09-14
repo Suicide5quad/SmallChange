@@ -8,7 +8,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SellTradeComponent } from './trades/sell-trade/sell-trade.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,8 +20,16 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     NavBarComponent,
     HeaderComponent,
     FooterComponent,
+    BuyTradeComponent,
+    SellTradeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
