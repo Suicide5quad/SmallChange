@@ -167,12 +167,14 @@
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
-    color: #fff;
+    color: #feae00;
+    background-color: antiquewhite;
     border: 2px solid #364d59;
   }
   
   .hero .info .btn-get-started:hover {
     background: #feb900;
+    color: antiquewhite
   }
   
   .hero .carousel-control-prev {

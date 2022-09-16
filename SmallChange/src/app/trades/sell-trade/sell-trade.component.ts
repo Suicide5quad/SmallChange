@@ -40,7 +40,7 @@ export class SellTradeComponent implements OnInit {
     this.tradeServ.placeSellTrade(this.submitObject).subscribe({
       next: (data) => {
         console.log(data);
-        window.location.href = '/';
+        window.location.href = '/Trade';
       },
     });
   }

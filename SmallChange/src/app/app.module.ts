@@ -14,21 +14,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellTradeComponent } from './trades/sell-trade/sell-trade.component';
+import { AllTradesComponent } from './all-trades/all-trades.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     LoginPageComponent,
+    BuyTradeComponent,
+    SellTradeComponent,
     NavBarComponent,
     HeaderComponent,
     FooterComponent,
     HomePageComponent,
     PortfolioPageComponent,
+    AllTradesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule,
-    BuyTradeComponent,
-    SellTradeComponent,
     FormsModule,
     ReactiveFormsModule,
   ],

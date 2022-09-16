@@ -44,7 +44,7 @@ export class BuyTradeComponent implements OnInit {
     this.tradeServ.placeBuyTrade(this.submitObject).subscribe({
       next: (data) => {
         console.log(data);
-        window.location.href = '/';
+        window.location.href = '/Trade';
       },
     });
   }
