@@ -15,6 +15,7 @@ import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellTradeComponent } from './trades/sell-trade/sell-trade.component';
 import { AllTradesComponent } from './all-trades/all-trades.component';
+import { SetInvestmentPreferencesComponent } from './set-investment-preferences/set-investment-preferences.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AllTradesComponent } from './all-trades/all-trades.component';
     HomePageComponent,
     PortfolioPageComponent,
     AllTradesComponent,
+    SetInvestmentPreferencesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule,
     FormsModule,
