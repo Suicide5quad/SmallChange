@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-set-investment-preferences',
@@ -6,43 +7,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./set-investment-preferences.component.css']
 })
 export class SetInvestmentPreferencesComponent implements OnInit {
-
-  constructor() { }
+  form: any;
+  formValidity: Boolean = false;
+  constructor(private router: Router) { }
 
   setPreferences() {
     let textarea = document.getElementsByTagName('textarea');
     let select = document.getElementsByTagName('select');
+    let checkBox = document.getElementsByTagName('input');
     let Preferences = {
       "Investment Purpose": textarea[0].value,
       "Risk Tolerance": select[0].value,
       "Income Category": select[1].value,
-      "Duration of Investments": select[2].value
+      "Duration of Investments": select[2].value,
+      "Checkbox for T&C": checkBox[0].checked
+    }
+    for (const [key, value] of Object.entries(Preferences)) {
+      if (value === '' || value === false) {
+        console.log("Form is invalid!");
+        return;
+      }
     }
     console.log(Preferences);
-    alert('Your investment preferences have been successfully saved!')
+    alert("Your investment preferences have been successfully saved!")
+    this.router.navigate(['Home']);
     return Preferences;
   }
 
   ngOnInit(): void {
-    (function () {
-      'use strict'
-    
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll('.needs-validation')
-    
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event: { preventDefault: () => void; stopPropagation: () => void; }) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }    
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()
+
+    this.form = document.querySelector('.needs-validation');
+
+    this.form.addEventListener('submit', (event:
+      { preventDefault: () => void; stopPropagation: () => void; }) => {
+
+      this.formValidity = this.form.checkValidity();
+
+      if (!this.formValidity) {
+        event.preventDefault();
+        event.stopPropagation();
+        let button = document.getElementsByTagName('button');
+        
+      }
+      this.form.classList.add('was-validated')
+
+    }, false)
+
   }
- 
+
 
 }

@@ -62,9 +62,6 @@ li {
     display: block;
     margin: 1rem;
   }
-  .responsive li {
-    display: none;
-  }
 }
 
 

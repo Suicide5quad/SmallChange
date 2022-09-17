@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -6,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  constructor() {}
+  
+  constructor(private router: Router) {}
+
   login() {
     let tags = document.getElementsByTagName('input');
     let credentials = {
       username: tags[0].value,
       password: tags[1].value,
     }
+    this.router.navigate(['Home']);
     return credentials
   }
   public ngOnInit(): void {
