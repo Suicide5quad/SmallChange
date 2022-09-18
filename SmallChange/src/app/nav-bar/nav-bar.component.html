@@ -1,7 +1,7 @@
-<div [ngClass]="{ topnav: show, responsive: !show }" id="myTopNav">
+<!-- <div [ngClass]="{ topnav: show, responsive: !show }" id="myTopNav">
   <a
     href="javascript:void(0);"
-    style="float: left; margin: 1rem"
+    style="float: right; margin: 1rem 1rem 1rem 1rem"
     class="icon"
     (click)="show = !show"
     >&#9776;
@@ -14,4 +14,35 @@
     <li><a routerLink="/Trade">Trade</a></li>
     <li><a routerLink="/Preferences">Preferences</a></li>
   </ul>
-</div>
+</div> -->
+
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #f2f2f2;">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/Home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/Portfolio">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/Home">Activity</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" aria-current="page" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Trade</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/BuyTrade">Buy Trade</a></li>
+            <li><a class="dropdown-item" routerLink="/SellTrade">Sell Trade</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/Preferences">Preferences</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

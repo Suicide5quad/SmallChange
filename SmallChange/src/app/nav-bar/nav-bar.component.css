@@ -1,29 +1,4 @@
-/**********************************************************************************
-  Note: SCSS is a superset of CSS3 - normal CSS will work in this file. SCSS adds
-  additional functionality such as variables and nesting.
-
-  If interested, check out: https://sass-lang.com/guide for additional information.
-***********************************************************************************/
-
-/* Your CSS goes here: */
-a {
-  font-family: "Fidelity Sans", "Arial", "sans-serif";
-  font-size: 18px;
-  line-height: 1.5em;
-  text-decoration: none;
-  box-sizing: content-box;
-  padding: 0.5rem 1rem;
-  color: #356f95;
-}
-a:hover {
-  color: #000;
-}
-a:visited {
-  color: #5c0198;
-}
-a:focus {
-  border: 1px dotted #cccccc;
-}
+/* 
 ul {
   margin-top: 0rem;
   margin-left: auto;
@@ -88,4 +63,29 @@ li {
     text-align: left;
   }
 }
-  
+   */
+   
+  a {
+    font-family: "Fidelity Sans", "Arial", "sans-serif";
+    font-size: 18px;
+    text-decoration: none;
+    box-sizing: content-box;
+    padding: 0.75rem 0.5rem 0.75 0.5rem;
+    color: #356f95;
+  }
+  a:hover {
+    color: #000;
+  }
+
+  a:focus {
+    border: 1px dotted #cccccc;
+  }
+
+  a:visited {
+    color: #5c0198;
+  }
+
+  li {
+    margin: 0em 2em 0 0;
+    padding: 0em;
+  }

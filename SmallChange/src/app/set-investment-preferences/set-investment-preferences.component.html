@@ -5,7 +5,7 @@
     <div id="preferences">Investment Preferences</div><br>
     <form class="row g-3 needs-validation mx-md-5 px-md-5 mx-1 px-1" novalidate id="formIP">
         <div class="mb-3">
-            <label for="validationCustom01" class="form-label">Investment Purpose</label>
+            <label for="validationCustom01" class="form-label">Investment Purpose <span>*</span></label>
             <textarea required id="validationCustom01" class="form-control" style="height: 100px"></textarea>
             <div class="invalid-feedback">
                 Please provide your Investment Purpose.
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="validationCustom02" class="form-label">Risk Tolerance</label>
+            <label for="validationCustom02" class="form-label">Risk Tolerance <span>*</span></label>
             <select class="form-select" id="validationCustom02" required>
                 <option selected disabled value="">Select a valid Risk Tolerance Level</option>
                 <option value="1">Conservative</option>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="validationCustom03" class="form-label">Income Category</label>
+            <label for="validationCustom03" class="form-label">Income Category <span>*</span></label>
             <select class="form-select" id="validationCustom03" required>
                 <option selected disabled value="">Select a valid monthly Income Category in Rupees</option>
                 <option value="1">Below 20,000</option>
@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="validationCustom04" class="form-label">Duration of Investments</label>
+            <label for="validationCustom04" class="form-label">Duration of Investments <span>*</span></label>
             <select class="form-select" id="validationCustom04" required>
                 <option selected disabled value="">Select a valid duration for your investments</option>
                 <option value="1">Below 5 years</option>
@@ -70,8 +70,7 @@
         <div class="mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                <label class="form-check-label" for="invalidCheck">
-                    Agree to terms and conditions
+                <label class="form-check-label" for="invalidCheck">Agree to terms and conditions <span>*</span>
                 </label>
                 <div class="invalid-feedback">
                     You must agree before submitting.
