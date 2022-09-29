@@ -1,19 +1,19 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { PortfolioService } from './portfolio.service';
+import { HistoryService } from './history.service';
 
-describe('PortfolioService', () => {
-  let service: PortfolioService;
+describe('HistoryService', () => {
+  let service: HistoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(PortfolioService);
+    service = TestBed.inject(HistoryService);
   });
 
-  xit('should be created', () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 });

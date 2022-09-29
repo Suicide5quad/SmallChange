@@ -6,6 +6,8 @@ import {
 } from '@angular/common/http/testing';
 import { TradeService } from './trade.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BuyTrade } from '../models/buyTrade';
+import { SellTrade } from '../models/sellTrade';
 
 describe('TradeService', () => {
   let service: TradeService;
@@ -54,6 +56,56 @@ describe('TradeService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should place a buy trade', inject(
+    [TradeService],
+    fakeAsync((service: TradeService) => {
+      let trade: any;
+      const submitObject: BuyTrade = {
+        assetClass: 'test',
+        security: 'test 1',
+        quantity: 10,
+        accNumber: 'acc1',
+      };
+      service.placeBuyTrade(submitObject).subscribe((data) => (trade = data));
+      console.log(trade);
+      const req = httpTestingController.expectOne('http://localhost:4000/buy');
+      // Assert that the request is a GET.
+      expect(req.request.method).toEqual('POST');
+      // Respond with mock data, causing Observable to resolve.
+      req.flush(submitObject);
+      // Assert that there are no outstanding requests.
+      httpTestingController.verify();
+      // Cause all Observables to complete and check the results
+      tick();
+      expect(trade.assetClass).toBe('test');
+    })
+  ));
+
+  it('should place a sell trade', inject(
+    [TradeService],
+    fakeAsync((service: TradeService) => {
+      let trade: any;
+      const submitObject: SellTrade = {
+        security: 'test 1',
+        quantity: 10,
+        accNumber: 'acc1',
+      };
+      service.placeSellTrade(submitObject).subscribe((data) => (trade = data));
+      console.log(trade);
+      const req = httpTestingController.expectOne('http://localhost:4000/sell');
+      // Assert that the request is a GET.
+      expect(req.request.method).toEqual('POST');
+      // Respond with mock data, causing Observable to resolve.
+      req.flush(submitObject);
+      // Assert that there are no outstanding requests.
+      httpTestingController.verify();
+      // Cause all Observables to complete and check the results
+      tick();
+      expect(trade.security).toBe('test 1');
+    })
+  ));
+
   it('should return trade details', inject(
     [TradeService],
     fakeAsync((service: TradeService) => {
