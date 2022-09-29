@@ -10,7 +10,7 @@
 .form-group:last-child {
   margin-bottom: 0rem;
 }
-#link {
+.link {
   text-align: center;
 }
 .error {

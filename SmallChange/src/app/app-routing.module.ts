@@ -5,24 +5,27 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PortfolioPageComponent } from './portfolio/portfolio-page/portfolio-page.component';
 import { SetInvestmentPreferencesComponent } from './set-investment-preferences/set-investment-preferences.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
 import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
 import { SellTradeComponent } from './trades/sell-trade/sell-trade.component';
+import { TradinghistoryComponent } from './tradinghistory/tradinghistory.component';
 
 const routes: Routes = [
   { path: 'Starter', component: HomePageComponent },
   { path: 'Login', component: LoginPageComponent },
-  { path: 'Portfolio', component: PortfolioPageComponent},
-  { path: 'Preferences', component: SetInvestmentPreferencesComponent},
-  { path: 'Home', component: MainPageComponent},
-  { path: 'BuyTrade', component: BuyTradeComponent},
-  { path: 'SellTrade', component: SellTradeComponent},
-  { path: '', redirectTo: '/Starter', pathMatch: 'full' }
+  { path: 'SignUp', component: SignupPageComponent },
+  { path: 'Activity', component: TradinghistoryComponent },
+  { path: 'Portfolio', component: PortfolioPageComponent },
+  { path: 'Preferences', component: SetInvestmentPreferencesComponent },
+  { path: 'Home', component: MainPageComponent },
+  { path: 'BuyTrade', component: BuyTradeComponent },
+  { path: 'SellTrade', component: SellTradeComponent },
+  { path: '', redirectTo: '/Starter', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
 // export const routingComponents = [HomePageComponent, LoginPageComponent];
