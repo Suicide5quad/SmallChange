@@ -1,0 +1,11 @@
+<app-reusable-table-overview
+  [current_amount]="current_amount"
+  [invested_amount]="invested_amount"
+></app-reusable-table-overview>
+
+<app-reusable-table
+  [tableRows]="holdings"
+  [tableColumns]="tableColumns"
+  [filterColumns]="['name', 'code']"
+  (rowClickEvent)="openDialog($event)"
+></app-reusable-table>

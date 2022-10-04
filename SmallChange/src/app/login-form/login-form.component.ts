@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login-form',
@@ -8,53 +10,114 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
-  login() {
-    let tags = document.getElementsByTagName('input');
-    let credentials = {
-      username: tags[0].value,
-      password: tags[1].value,
+  public loginValid = true;
+  public submitted = false;
+  public username = '';
+  public password = '';
+  loginForm!: FormGroup;
+  registrationForm!: FormGroup;
+  public loginRegistrationCardSwitch: boolean = false;
+
+  errorMessage: string = '';
+  showError: boolean = false;
+
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      userName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(20),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9a-zA-Z]*$'),
+        Validators.minLength(6),
+        Validators.maxLength(24),
+      ]),
+    });
+
+    this.registrationForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      userName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+        Validators.maxLength(20),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9a-zA-Z]*$'),
+        Validators.minLength(6),
+        Validators.maxLength(24),
+      ]),
+      phone:new FormControl('',[Validators.required]),
+      dob:new FormControl('',[Validators.required])
+    });
+  }
+  get userNameField(): any {
+    return this.loginForm.get('userName');
+  }
+  get passwordField(): any {
+    return this.loginForm.get('password');
+  }
+
+  get userNameFieldRegister(): any {
+    return this.registrationForm.get('userName');
+  }
+  get passwordFieldRegister(): any {
+    return this.registrationForm.get('password');
+  }
+  get phoneFieldRegister(): any {
+    return this.registrationForm.get('phone');
+  }
+  get dobFieldRegister(): any {
+    return this.registrationForm.get('dob');
+  }
+
+  public onSubmit(): void {
+    if(this.loginValid == true){
+    this.submitted=true;
+    this.loginValid = true;
+    console.log('');
     }
-    this.router.navigate(['Home']);
-    return credentials
   }
-  public ngOnInit(): void {
-    /* This component requires some JavaScript functionality. Please enter it within this ngOnInit() function. */
-    let tags = document.getElementsByTagName('input');
-    tags[0].addEventListener('input', (err) => {
-      var errorText = document.getElementsByTagName('p');
-      console.log(errorText[0].style.display);
-      var inputText = tags[0].value;
-      var regex = new RegExp('^[a-zA-Z0-9-_-]{3,18}$');
-      if (regex.test(inputText)) {
-        errorText[0].style.display = 'none';
-        tags[0].style.borderWidth = 'medium';
-        tags[0].style.borderStyle = 'solid';
-        tags[0].style.borderColor = 'black';
-      } else {
-        tags[0].style.borderStyle = 'solid';
-        tags[0].style.borderColor = 'red';
-        tags[0].style.borderWidth = 'medium';
-        errorText[0].style.display = 'block';
-      }
-    });
-    tags[1].addEventListener('input', (err) => {
-      var errorText = document.getElementsByTagName('p');
-      console.log(errorText[1].style.display);
-      var inputText = tags[1].value;
-      var regex = new RegExp('^[a-zA-Z0-9-_-]{6,24}$');
-      if (regex.test(inputText)) {
-        errorText[1].style.display = 'none';
-        tags[1].style.borderWidth = 'medium';
-        tags[1].style.borderStyle = 'solid';
-        tags[1].style.borderColor = 'black';
-      } else {
-        tags[1].style.borderStyle = 'solid';
-        tags[1].style.borderColor = 'red';
-        tags[1].style.borderWidth = 'medium';
-        errorText[1].style.display = 'block';
-      }
-    });
+
+  loginFormSubmit() {
+    this.submitted=true;
+    this.loginValid=true;
+    console.log(this.loginForm.value);
+    this.loginService.login().subscribe((data) => {
+        data.find((a: any) => {
+          if (
+            a.email == this.loginForm.value.userName &&
+            a.password == this.loginForm.value.password
+          )
+            this.router.navigate(['Home']);
+          else this.showError = true;
+        });
+      });
   }
+
+  registrationFormSubmit() {
+    console.log(this.registrationForm.value);
+    this.loginRegistrationCardSwitch = false;
+    this.loginService
+      .register(
+        this.registrationForm.value.name,
+        this.registrationForm.value.userName,
+        this.registrationForm.value.password,
+        this.registrationForm.value.phone,
+        this.registrationForm.value.dob
+      )
+      .subscribe((data) => {
+        console.log(data);
+      });
+  }
+  toggleToRegistrationForm() {
+    this.showError = false;
+    this.loginRegistrationCardSwitch = true;
+  }
+ 
+   
 }

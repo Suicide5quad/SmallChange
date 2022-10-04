@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { PortfolioPageComponent } from './portfolio/portfolio-page/portfolio-page.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SetInvestmentPreferencesComponent } from './set-investment-preferences/set-investment-preferences.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
@@ -13,9 +13,8 @@ import { TradinghistoryComponent } from './tradinghistory/tradinghistory.compone
 const routes: Routes = [
   { path: 'Starter', component: HomePageComponent },
   { path: 'Login', component: LoginPageComponent },
-  { path: 'SignUp', component: SignupPageComponent },
   { path: 'Activity', component: TradinghistoryComponent },
-  { path: 'Portfolio', component: PortfolioPageComponent },
+  { path: 'Portfolio', component: PortfolioComponent },
   { path: 'Preferences', component: SetInvestmentPreferencesComponent },
   { path: 'Home', component: MainPageComponent },
   { path: 'BuyTrade', component: BuyTradeComponent },

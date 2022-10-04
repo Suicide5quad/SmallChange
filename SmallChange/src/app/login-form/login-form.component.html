@@ -1,52 +1,80 @@
-<div id="login">Login Page</div>
-<br />
-<p>
-  Did you know that SmallChange&trade; has no investment fees on portfolios with
-  balances under $5,000? After that, only a 0.25% fee applies monthly.
-</p>
-<br /><br />
-<div class="form">
-  <div class="form-group">
-    <label for="username" class="label">Username</label>
-  </div>
-  <div class="form-group">
-    <input
-      type="text"
-      name="username"
-      id="username"
-      placeholder="Enter your username"
-    />
-  </div>
-  <div>
-    <p class="error" id="errorText">
-      Invalid Username - Must contain 3 and 18 letters, numbers, underscores or
-      hyphens.
-    </p>
-  </div>
-  <br />
-  <div class="form-group">
-    <label for="password" class="label">Password</label>
-  </div>
-  <div class="form-group">
-    <input
-      type="password"
-      name="password"
-      id="password"
-      placeholder="Enter the password"
-    />
-  </div>
-  <div>
-    <p class="error" id="errorTextPass">
-      Invalid password - Must contain between 6 and 24 letters, numbers,
-      underscores or hyphens
-    </p>
-  </div>
-  <br />
-  <div class="form-group">
-    <button type="submit" (click)="login()">Login</button>
-  </div>
-  <div class="link"><a href="#">Forgot your password?</a></div>
-  <div class="link">
-    <a routerLink="/SignUp">Don't have an account? Sign up now!</a>
-  </div>
-</div>
+<mat-card *ngIf="loginRegistrationCardSwitch" class="card">
+  <mat-card-content>
+    <form [formGroup]="registrationForm">
+      <h2>SignUp</h2>
+      <mat-error *ngIf="!loginValid">
+        The username and password were not recognized
+      </mat-error>
+      <mat-form-field>
+        <mat-label>Enter your name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" required>
+        <mat-error>
+          Please provide your name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter your Email Id</mat-label>
+        <input matInput placeholder="Email" formControlName="userName"
+          [class.is-invalid]="userNameFieldRegister.touched && userNameFieldRegister.invalid" id="id_userName" required>
+        <mat-error>
+          Email ID should be 4 to 20 characters long
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" formControlName="password"
+          [class.is-invalid]="passwordFieldRegister.touched && passwordFieldRegister.invalid" type="password" id="id_Password" required>
+        <mat-error>
+          Password must be 6 to 20 characters long
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="PhoneNumber" formControlName="phone"
+          [class.is-invalid]="phoneFieldRegister.touched && phoneFieldRegister.invalid"  id="id_Phone" required>
+        <mat-error>
+          pls enter your phone number
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="dob" formControlName="dob"
+          [class.is-invalid]="dobFieldRegister.touched && dobFieldRegister.invalid"  id="id_Phone" required>
+        <mat-error>
+         pls enter your dob
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="button" color="primary" (click)="registrationFormSubmit()" [disabled]="registrationForm.invalid">
+        Create Account</button>
+    </form>
+  </mat-card-content>
+</mat-card> 
+
+<mat-card *ngIf="!loginRegistrationCardSwitch" class="card">
+  <mat-card-content>
+    <form [formGroup]="loginForm">
+      <h2>Login</h2>
+      <mat-error *ngIf="showError">
+        The username and password were not recognized
+      </mat-error>
+      <mat-form-field>
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="Username" formControlName="userName"
+          [class.is-invalid]="userNameField.touched && userNameField.invalid" id="id_userName" required>
+        <mat-error>
+          User ID should be 4 to 20 characters long
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Select a password</mat-label>
+        <input matInput placeholder="Password" formControlName="password"
+          [class.is-invalid]="passwordField.touched && passwordField.invalid" type="password" id="id_Password" required>
+        <mat-error>
+          Password must be 6 to 20 characters long
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="loginFormSubmit()" [disabled]="loginForm.invalid">Login</button>
+    </form>
+    
+  </mat-card-content>
+  <mat-card-footer>
+    <a mat-button (click)="toggleToRegistrationForm()" target="_blank">New User? Create an account</a>
+  </mat-card-footer>
+</mat-card>
