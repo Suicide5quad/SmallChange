@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Preferences } from '../models/preferences';
+import { PreferencesService } from '../services/preferences.service';
 
 @Component({
   selector: 'app-set-investment-preferences',
@@ -9,29 +11,39 @@ import { Router } from '@angular/router';
 export class SetInvestmentPreferencesComponent implements OnInit {
   form: any;
   formValidity: Boolean = false;
-  constructor(private router: Router) { }
+
+  preferences: Preferences  = new Preferences();
+  
+  checkboxValue:boolean = false;
+
+  constructor(private router: Router, private preferencesService: PreferencesService ) {
+    // update this.preferences.userId here to make it submit it to backend
+   }
 
   setPreferences() {
-    let textarea = document.getElementsByTagName('textarea');
-    let select = document.getElementsByTagName('select');
-    let checkBox = document.getElementsByTagName('input');
-    let Preferences = {
-      "Investment Purpose": textarea[0].value,
-      "Risk Tolerance": select[0].value,
-      "Income Category": select[1].value,
-      "Duration of Investments": select[2].value,
-      "Checkbox for T&C": checkBox[0].checked
+    if (this.checkboxValue == false || (Object.entries(this.preferences).length < 4)) {
+      console.log("Form is invalid!");
+      return;
     }
-    for (const [key, value] of Object.entries(Preferences)) {
-      if (value === '' || value === false) {
-        console.log("Form is invalid!");
-        return;
-      }
-    }
-    console.log(Preferences);
-    alert("Your investment preferences have been successfully saved!")
+    console.log(this.preferences);
+    this.addNewPreference(this.preferences);
+    // this.updatePreference(this.preferences);
+    alert("Your investment preferences have been successfully saved!");
     this.router.navigate(['Home']);
-    return Preferences;
+  }
+
+  updatePreference(preference: Preferences) {
+    this.preferencesService.updatePreference(preference.userId, preference).subscribe( data =>{
+      console.log(data);
+    },
+    error => console.log(error));
+  }
+
+  addNewPreference(preference:Preferences) {
+    this.preferencesService.addPreference(preference).subscribe( data =>{
+      console.log(data);
+    },
+    error => console.log(error));
   }
 
   ngOnInit(): void {
