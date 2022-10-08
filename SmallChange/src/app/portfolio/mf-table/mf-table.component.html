@@ -3,8 +3,25 @@
   [invested_amount]="invested_amount"
 ></app-reusable-table-overview>
 
-<app-reusable-table
-  [tableRows]="holdings"
-  [tableColumns]="tableColumns"
-  [filterColumns]="['name', 'code']"
-></app-reusable-table>
+<div class="example-header m-5" style="text-align: center">
+  <input
+    type="text"
+    style="width: 50%"
+    id="filter-text-box"
+    placeholder="Search..."
+    (input)="onFilterTextBoxChanged()"
+  />
+</div>
+<ag-grid-angular
+  class="ag-theme-alpine custom-class"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowData]="rowData"
+  [domLayout]="domLayout"
+  [cacheQuickFilter]="true"
+  [rowSelection]="rowSelection"
+  (rowClicked)="openDialog($event)"
+  (gridReady)="onGridReady($event)"
+  [pagination]="true"
+  [paginationPageSize]="paginationPageSize"
+></ag-grid-angular>

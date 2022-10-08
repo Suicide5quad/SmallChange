@@ -6,46 +6,91 @@
         The username and password were not recognized
       </mat-error>
       <mat-form-field>
-        <mat-label>Enter your name</mat-label>
-        <input matInput placeholder="Name" formControlName="name" required>
-        <mat-error>
-          Please provide your name
-        </mat-error>
+        <mat-label>Enter your first name</mat-label>
+        <input
+          matInput
+          placeholder="First Name"
+          formControlName="firstName"
+          required
+        />
+        <mat-error> Please provide your first name </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter your last name</mat-label>
+        <input
+          matInput
+          placeholder="Last Name"
+          formControlName="lastName"
+          required
+        />
+        <mat-error> Please provide your last name </mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Enter your Email Id</mat-label>
-        <input matInput placeholder="Email" formControlName="userName"
-          [class.is-invalid]="userNameFieldRegister.touched && userNameFieldRegister.invalid" id="id_userName" required>
-        <mat-error>
-          Email ID should be 4 to 20 characters long
-        </mat-error>
+        <input
+          matInput
+          placeholder="Email"
+          formControlName="emailId"
+          [class.is-invalid]="
+            emailIdFieldRegister.touched && emailIdFieldRegister.invalid
+          "
+          id="id_userName"
+          required
+        />
+        <mat-error> Email ID should be 4 to 20 characters long </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Password" formControlName="password"
-          [class.is-invalid]="passwordFieldRegister.touched && passwordFieldRegister.invalid" type="password" id="id_Password" required>
-        <mat-error>
-          Password must be 6 to 20 characters long
-        </mat-error>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [class.is-invalid]="
+            passwordFieldRegister.touched && passwordFieldRegister.invalid
+          "
+          type="password"
+          id="id_Password"
+          required
+        />
+        <mat-error> Password must be 6 to 20 characters long </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="PhoneNumber" formControlName="phone"
-          [class.is-invalid]="phoneFieldRegister.touched && phoneFieldRegister.invalid"  id="id_Phone" required>
-        <mat-error>
-          pls enter your phone number
-        </mat-error>
+        <input
+          matInput
+          placeholder="PhoneNumber"
+          formControlName="phNo"
+          [class.is-invalid]="
+            phoneFieldRegister.touched && phoneFieldRegister.invalid
+          "
+          id="id_Phone"
+          required
+        />
+        <mat-error> Please enter your phone number </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="dob" formControlName="dob"
-          [class.is-invalid]="dobFieldRegister.touched && dobFieldRegister.invalid"  id="id_Phone" required>
-        <mat-error>
-         pls enter your dob
-        </mat-error>
+        <input
+          matInput
+          placeholder="dob"
+          formControlName="dob"
+          [class.is-invalid]="
+            dobFieldRegister.touched && dobFieldRegister.invalid
+          "
+          id="id_Dob"
+          required
+        />
+        <mat-error> Please enter your dob </mat-error>
       </mat-form-field>
-      <button mat-raised-button type="button" color="primary" (click)="registrationFormSubmit()" [disabled]="registrationForm.invalid">
-        Create Account</button>
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="registrationFormSubmit()"
+        [disabled]="registrationForm.invalid"
+      >
+        Create Account
+      </button>
     </form>
   </mat-card-content>
-</mat-card> 
+</mat-card>
 
 <mat-card *ngIf="!loginRegistrationCardSwitch" class="card">
   <mat-card-content>
@@ -56,25 +101,42 @@
       </mat-error>
       <mat-form-field>
         <mat-label>User Name</mat-label>
-        <input matInput placeholder="Username" formControlName="userName"
-          [class.is-invalid]="userNameField.touched && userNameField.invalid" id="id_userName" required>
-        <mat-error>
-          User ID should be 4 to 20 characters long
-        </mat-error>
+        <input
+          matInput
+          placeholder="Username"
+          formControlName="userName"
+          [class.is-invalid]="userNameField.touched && userNameField.invalid"
+          id="id_userName"
+          required
+        />
+        <mat-error> User ID should be 4 to 20 characters long </mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Select a password</mat-label>
-        <input matInput placeholder="Password" formControlName="password"
-          [class.is-invalid]="passwordField.touched && passwordField.invalid" type="password" id="id_Password" required>
-        <mat-error>
-          Password must be 6 to 20 characters long
-        </mat-error>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [class.is-invalid]="passwordField.touched && passwordField.invalid"
+          type="password"
+          id="id_Password"
+          required
+        />
+        <mat-error> Password must be 6 to 20 characters long </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="loginFormSubmit()" [disabled]="loginForm.invalid">Login</button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="loginFormSubmit()"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
     </form>
-    
   </mat-card-content>
   <mat-card-footer>
-    <a mat-button (click)="toggleToRegistrationForm()" target="_blank">New User? Create an account</a>
+    <a mat-button (click)="toggleToRegistrationForm()" target="_blank"
+      >New User? Create an account</a
+    >
   </mat-card-footer>
 </mat-card>

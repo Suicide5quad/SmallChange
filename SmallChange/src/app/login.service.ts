@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Login } from './models/login';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -8,28 +12,37 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-
-
   constructor(private http: HttpClient, private router: Router) {}
 
   login(): Observable<Login[]> {
     return this.http
-      .get<Login[]>('http://localhost:3000/signup')
+      .get<Login[]>('http://localhost:8080/smallchange/users')
       .pipe(catchError(this.handleError));
   }
 
-  register(name: String, userName: String, password: String,phoneno:number,dob:string): Observable<Login> {
+  register(
+    firstName: String,
+    lastName: String,
+    emailId: String,
+    password: String,
+    phNo: number,
+    dob: string
+  ): Observable<Login> {
     const logins = new Login();
-    logins.id=37;
-    logins.name = name;
-    logins.email = userName;
+    logins.firstName = firstName;
+    logins.lastName = lastName;
+    logins.emailId = emailId;
     logins.password = password;
+    logins.phNo = phNo;
+    logins.dob = dob;
     const headers = new HttpHeaders({
-      'Content-type': 'application/json'
-  });
+      'Content-type': 'application/json',
+    });
 
     return this.http
-      .post<Login>('http://localhost:3000/signup', logins ,{ headers: headers })
+      .post<Login>('http://localhost:8080/smallchange/users', logins, {
+        headers: headers,
+      })
       .pipe(catchError(this.handleError));
   }
 

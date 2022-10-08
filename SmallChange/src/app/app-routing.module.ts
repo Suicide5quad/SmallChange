@@ -13,12 +13,12 @@ import { TradinghistoryComponent } from './tradinghistory/tradinghistory.compone
 const routes: Routes = [
   { path: 'Starter', component: HomePageComponent },
   { path: 'Login', component: LoginPageComponent },
-  { path: 'Activity', component: TradinghistoryComponent },
-  { path: 'Portfolio', component: PortfolioComponent },
-  { path: 'Preferences', component: SetInvestmentPreferencesComponent },
-  { path: 'Home', component: MainPageComponent },
-  { path: 'BuyTrade', component: BuyTradeComponent },
-  { path: 'SellTrade', component: SellTradeComponent },
+  { path: 'Activity/:id', component: TradinghistoryComponent },
+  { path: 'Portfolio/:id', component: PortfolioComponent },
+  { path: 'Preferences/:id', component: SetInvestmentPreferencesComponent },
+  { path: 'Home/:id', component: MainPageComponent },
+  { path: 'BuyTrade/:id', component: BuyTradeComponent },
+  { path: 'SellTrade/:id', component: SellTradeComponent },
   { path: '', redirectTo: '/Starter', pathMatch: 'full' },
 ];
 

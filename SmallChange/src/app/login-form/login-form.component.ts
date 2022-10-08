@@ -9,7 +9,6 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  
   constructor(private router: Router, private loginService: LoginService) {}
 
   public loginValid = true;
@@ -39,8 +38,9 @@ export class LoginFormComponent implements OnInit {
     });
 
     this.registrationForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      userName: new FormControl('', [
+      firstName: new FormControl('', [Validators.required]),
+      lastName: new FormControl('', [Validators.required]),
+      emailId: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(20),
@@ -51,10 +51,16 @@ export class LoginFormComponent implements OnInit {
         Validators.minLength(6),
         Validators.maxLength(24),
       ]),
-      phone:new FormControl('',[Validators.required]),
-      dob:new FormControl('',[Validators.required])
+      phNo: new FormControl('', [Validators.required]),
+      dob: new FormControl('', [Validators.required]),
     });
   }
+  // get firstNameFieldRegister(): any {
+  //   return this.registrationForm.get('fistName');
+  // }
+  // get lastNameFieldRegister(): any {
+  //   return this.registrationForm.get('lastName');
+  // }
   get userNameField(): any {
     return this.loginForm.get('userName');
   }
@@ -62,41 +68,42 @@ export class LoginFormComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  get userNameFieldRegister(): any {
-    return this.registrationForm.get('userName');
+  get emailIdFieldRegister(): any {
+    return this.registrationForm.get('emailId');
   }
   get passwordFieldRegister(): any {
     return this.registrationForm.get('password');
   }
   get phoneFieldRegister(): any {
-    return this.registrationForm.get('phone');
+    return this.registrationForm.get('phNo');
   }
   get dobFieldRegister(): any {
     return this.registrationForm.get('dob');
   }
 
   public onSubmit(): void {
-    if(this.loginValid == true){
-    this.submitted=true;
-    this.loginValid = true;
-    console.log('');
+    if (this.loginValid == true) {
+      this.submitted = true;
+      this.loginValid = true;
+      console.log('');
     }
   }
 
   loginFormSubmit() {
-    this.submitted=true;
-    this.loginValid=true;
+    this.submitted = true;
+    this.loginValid = true;
     console.log(this.loginForm.value);
     this.loginService.login().subscribe((data) => {
-        data.find((a: any) => {
-          if (
-            a.email == this.loginForm.value.userName &&
-            a.password == this.loginForm.value.password
-          )
-            this.router.navigate(['Home']);
-          else this.showError = true;
-        });
+      data.find((a: any) => {
+        console.log(a);
+        if (
+          a.emailId == this.loginForm.value.userName &&
+          a.password == this.loginForm.value.password
+        )
+          this.router.navigate([`Home`,a.id]);
+        else this.showError = true;
       });
+    });
   }
 
   registrationFormSubmit() {
@@ -104,10 +111,11 @@ export class LoginFormComponent implements OnInit {
     this.loginRegistrationCardSwitch = false;
     this.loginService
       .register(
-        this.registrationForm.value.name,
-        this.registrationForm.value.userName,
+        this.registrationForm.value.firstName,
+        this.registrationForm.value.lastName,
+        this.registrationForm.value.emailId,
         this.registrationForm.value.password,
-        this.registrationForm.value.phone,
+        this.registrationForm.value.phNo,
         this.registrationForm.value.dob
       )
       .subscribe((data) => {
@@ -118,6 +126,4 @@ export class LoginFormComponent implements OnInit {
     this.showError = false;
     this.loginRegistrationCardSwitch = true;
   }
- 
-   
 }

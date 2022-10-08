@@ -35,15 +35,23 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/Home">Home</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['/Home', 1]"
+            >Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/Portfolio"
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/Portfolio', 1]"
             >Portfolio</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/Activity"
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/Activity', 1]"
             >Activity</a
           >
         </li>
@@ -59,15 +67,22 @@
           >
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" routerLink="/BuyTrade">Buy Trade</a>
+              <a class="dropdown-item" [routerLink]="['/BuyTrade', 1]"
+                >Buy Trade</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" routerLink="/SellTrade">Sell Trade</a>
+              <a class="dropdown-item" [routerLink]="['/SellTrade', 1]"
+                >Sell Trade</a
+              >
             </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/Preferences"
+          <a
+            class="nav-link"
+            aria-current="page"
+            [routerLink]="['/Preferences', 1]"
             >Preferences</a
           >
         </li>

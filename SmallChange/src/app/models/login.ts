@@ -1,8 +1,10 @@
 export class Login {
-    id!:number
-    name! :String 
-    email! :String 
-    password!: String
-    phoneno!: number
-    dob!: String
+  id!: number;
+  firstName!: String;
+  lastName!: String;
+  emailId!: String;
+  password!: String;
+  phNo!: number;
+  dob!: String;
+  balance!: number;
 }

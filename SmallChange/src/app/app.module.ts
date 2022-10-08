@@ -19,7 +19,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { ReusableTableComponent } from './shared/reusable-table/reusable-table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReusableTableOverviewComponent  } from './shared/reusable-tableoverview/reusable-tableoverview.component';
+import { ReusableTableOverviewComponent } from './shared/reusable-tableoverview/reusable-tableoverview.component';
 import { BondTableComponent } from './portfolio/bond-table/bond-table.component';
 import { MfTableComponent } from './portfolio/mf-table/mf-table.component';
 import { PortfolioDialogComponent } from './portfolio/portfolio-dialog/portfolio-dialog.component';
@@ -39,7 +39,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MatRadioModule } from '@angular/material/radio';
-
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -65,7 +65,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MfTableComponent,
     PortfolioDialogComponent,
     StockTableComponent,
-    PortfolioComponent
+    PortfolioComponent,
   ],
 
   imports: [
@@ -91,6 +91,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSortModule,
     MatDialogModule,
     MatRadioModule,
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,5 +1,23 @@
-<h1>{{ data.dialog_type }}</h1>
-<h2>Company_Name (Symbol)</h2>
+<h1>{{ data.dialog_type | uppercase }}</h1>
+<ng-container *ngFor="let e of data.data | keyvalue">
+  <ng-container *ngIf="e.key == 'security_name'">
+    <h2>{{ e.value }}</h2>
+  </ng-container>
+</ng-container>
 <div *ngFor="let e of data.data | keyvalue">{{ e.key }} : {{ e.value }}</div>
-<button mat-button color="primary">BUY</button>
-<button mat-button color="warn">SELL</button>
+<button
+  mat-button
+  color="primary"
+  [routerLink]="['/BuyTrade', 1]"
+  (click)="closeDialog()"
+>
+  BUY
+</button>
+<button
+  mat-button
+  color="warn"
+  [routerLink]="['/SellTrade', 1]"
+  (click)="closeDialog()"
+>
+  SELL
+</button>
