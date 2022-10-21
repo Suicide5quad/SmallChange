@@ -1,7 +1,48 @@
 <div>
-    <app-header></app-header>
-    <app-nav-bar></app-nav-bar>
-    <br><br>
-    <h1>Home Page</h1>
-    <app-footer></app-footer>
+  <app-header></app-header>
+  <app-nav-bar></app-nav-bar>
+  <!-- <br /><br />
+  
+  <h1>Name : {{ this.userName }}</h1>
+  <h1>Date Of Birth : {{ this.dob }}</h1>
+  <h1>Ph no. : {{ this.phNo }}</h1>
+  <h1>Balance : {{ this.balance | currency }}</h1>
+  <br /><br /><br /><br /><br /><br /><br /><br /> -->
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="card">
+      <div class="upper">
+        <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid" />
+      </div>
+
+      <div class="user text-center">
+        <div class="profile">
+          <img
+            src="https://www.nicepng.com/png/detail/16-169198_dollar-sign-newer-bodie-green-dollar-sign-png.png"
+            class="rounded-circle"
+            width="80"
+          />
+        </div>
+      </div>
+
+      <div class="mt-5 text-center">
+        <h4 class="mb-0">{{ this.userName }}</h4>
+        <span class="text-muted d-block mb-2">+91 {{ this.phNo }}</span>
+
+        <button
+          class="btn btn-success btn-sm follow"
+          [routerLink]="['/Portfolio', 1]"
+        >
+          View Portfolio
+        </button>
+
+        <div class="d-flex justify-content-center align-items-center mt-4 px-4">
+          <div class="stats">
+            <h4 class="mb-0">Balance</h4>
+            <span>{{ this.balance | currency }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
 </div>

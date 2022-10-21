@@ -40,6 +40,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { AgGridModule } from 'ag-grid-angular';
+import { DatePipe } from '@angular/common';
+import { PhonePipe } from './phone';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,7 @@ import { AgGridModule } from 'ag-grid-angular';
     MatRadioModule,
     AgGridModule,
   ],
-  providers: [],
+  providers: [DatePipe, PhonePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

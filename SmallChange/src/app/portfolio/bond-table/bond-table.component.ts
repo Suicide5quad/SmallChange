@@ -64,6 +64,6 @@ export class BondTableComponent implements OnInit {
     });
   }
   openDialog(data: any) {
-    this.openDialogEvent.emit({ dialog_type: 'bond', data: data.data });
+    this.openDialogEvent.emit({ dialog_type: 'Bond', data: data.data });
   }
 }

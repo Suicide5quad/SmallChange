@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { AuthService } from '../services/auth.service';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +11,12 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private authenticationService: AuthService,
+    private route: ActivatedRoute
+  ) {}
 
   public loginValid = true;
   public submitted = false;
@@ -23,6 +30,7 @@ export class LoginFormComponent implements OnInit {
   showError: boolean = false;
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.loginForm = new FormGroup({
       userName: new FormControl('', [
         Validators.required,
@@ -88,20 +96,25 @@ export class LoginFormComponent implements OnInit {
       console.log('');
     }
   }
-
+  returnUrl!: string;
+  get f() {
+    return this.loginForm.controls;
+  }
   loginFormSubmit() {
     this.submitted = true;
     this.loginValid = true;
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
+
     this.loginService.login().subscribe((data) => {
       data.find((a: any) => {
         console.log(a);
         if (
           a.emailId == this.loginForm.value.userName &&
           a.password == this.loginForm.value.password
-        )
-          this.router.navigate([`Home`,a.id]);
-        else this.showError = true;
+        ) {
+          this.router.navigate([`Home`, a.id]);
+          localStorage.setItem('currentUser', JSON.stringify(a.emailId));
+        } else this.showError = true;
       });
     });
   }
@@ -125,5 +138,9 @@ export class LoginFormComponent implements OnInit {
   toggleToRegistrationForm() {
     this.showError = false;
     this.loginRegistrationCardSwitch = true;
+  }
+
+  toggleToLoginForm() {
+    this.loginRegistrationCardSwitch = false;
   }
 }

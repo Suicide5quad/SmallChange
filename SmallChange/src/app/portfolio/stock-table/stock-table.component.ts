@@ -4,6 +4,7 @@ import { StockHolding } from 'src/app/models/stock-holding';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { ColDef } from 'ag-grid-community';
+import { TradeService } from 'src/app/trades/trade.service';
 @Component({
   selector: 'app-stock-table',
   templateUrl: './stock-table.component.html',
@@ -29,7 +30,7 @@ export class StockTableComponent implements OnInit {
   userId: any;
   errorMessage!: string;
   public paginationPageSize = 10;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private tradeServ: TradeService) {}
 
   ngOnInit(): void {
     this.invested_amount = 0;
@@ -65,6 +66,11 @@ export class StockTableComponent implements OnInit {
     });
   }
   openDialog(data: any) {
-    this.openDialogEvent.emit({ dialog_type: 'stock', data: data.data });
+    this.openDialogEvent.emit({ dialog_type: 'Stock', data: data.data });
+  }
+  getSelectedRowData() {
+    const selectedData = this.gridApi.getSelectedRows();
+    this.tradeServ.setTrade(selectedData);
+    return selectedData;
   }
 }

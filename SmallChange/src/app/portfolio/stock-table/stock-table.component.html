@@ -20,6 +20,7 @@
   [domLayout]="domLayout"
   [cacheQuickFilter]="true"
   [rowSelection]="rowSelection"
+  (selectionChanged)="getSelectedRowData()"
   (rowClicked)="openDialog($event)"
   (gridReady)="onGridReady($event)"
   [pagination]="true"

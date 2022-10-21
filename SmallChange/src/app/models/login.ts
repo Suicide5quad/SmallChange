@@ -7,4 +7,5 @@ export class Login {
   phNo!: number;
   dob!: String;
   balance!: number;
+  authdata?: string;
 }
