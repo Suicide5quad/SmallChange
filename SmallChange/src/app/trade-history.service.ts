@@ -14,14 +14,17 @@ export class TradeHistoryService {
       console.log(type);
       return this.http
         .get<TradeHistory[]>(
-          'http://localhost:8080/smallchange/trade/' + userId + '?type=' + type
+          'http://localhost:8080/smallchange/trade/' +
+            userId +
+            '/side?type=' +
+            type
         )
         .pipe(catchError(this.handleError));
     } else {
       console.log('hi');
       return this.http
         .get<TradeHistory[]>(
-          'http://localhost:8080/smallchange/trade/' + userId + '?type='
+          'http://localhost:8080/smallchange/trade/' + userId + '/side?type='
         )
         .pipe(catchError(this.handleError));
     }

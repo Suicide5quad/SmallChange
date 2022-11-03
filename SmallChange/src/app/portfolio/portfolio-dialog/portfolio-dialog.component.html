@@ -12,19 +12,23 @@
   </ng-container>
 </div>
 <br />
-<button
-  mat-button
-  color="primary"
-  [routerLink]="['/BuyTrade', 1]"
-  (click)="goToPlaceBuyTrade()"
->
-  BUY
-</button>
-<button
-  mat-button
-  color="warn"
-  [routerLink]="['/SellTrade', 1]"
-  (click)="goToPlaceBuyTrade()"
->
-  SELL
-</button>
+<ng-container *ngFor="let e of data.data | keyvalue">
+  <ng-container *ngIf="e.key == 'user_id'">
+    <button
+      mat-button
+      color="primary"
+      [routerLink]="['/BuyTrade', e.value]"
+      (click)="goToPlaceBuyTrade()"
+    >
+      BUY
+    </button>
+    <button
+      mat-button
+      color="warn"
+      [routerLink]="['/SellTrade', e.value]"
+      (click)="goToPlaceBuyTrade()"
+    >
+      SELL
+    </button>
+  </ng-container>
+</ng-container>
