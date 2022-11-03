@@ -1,65 +1,64 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
 
-body {
+
+/* body {
   background-color: #545454;
   font-family: "Poppins", sans-serif;
   font-weight: 300;
+} */
+/* img.img1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-h2 {
+
+td, th {
   text-align: center;
+  padding: 3px;
+  height: 40px;
+  font-size: 15px;
 }
-.container {
-  height: 70vh;
+tr{
+  background-color: #c3c7be;
+  color: black;
+  height: 40px;
 }
-
-.card {
-  width: 380px;
-  border: none;
-  border-radius: 15px;
-  padding: 8px;
-  background-color: #fff;
-  position: relative;
-  height: 370px;
-}
-
-.upper {
-  height: 100px;
-}
-
-.upper img {
+p{
+  text-align: center;
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  font-size: 40px;
 }
 
-.user {
-  position: relative;
+button{
+  color: black;
+  border-radius: 9px;
+  background-color: #f0dee0f8;
 }
+p{
+  font-family:"Fidelity Sans", "Arial", "sans-serif" ;
+} */
+/* body{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-image: url("https://media.convertkit.com/post/sF3pIacc-5-essential-landing-page-metrics.jpg?fit=scale&fm=pjpg&h=956&w=1920");
+} */
 
-.profile img {
-  height: 80px;
-  width: 80px;
-  margin-top: 2px;
-}
+.gradient-custom {
+  /* fallback for old browsers */
+  /* background: #f6d365; */
+  
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+  
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+  }
 
-.profile {
-  position: absolute;
-  top: -50px;
-  left: 38%;
-  height: 90px;
-  width: 90px;
-  border: 3px solid #fff;
-
-  border-radius: 50%;
-}
-
-.follow {
-  border-radius: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 35px;
-}
-
-.stats span {
-  font-size: 29px;
-}
+  table {    
+    border-collapse: collapse;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+  }
