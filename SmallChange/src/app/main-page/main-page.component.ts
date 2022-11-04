@@ -11,6 +11,7 @@ export class MainPageComponent implements OnInit {
   public userId: string = '';
   public userName: string = '';
   public balance: number = 0;
+  public email: string = '';
   public dob!: Date;
   public phNo: string = '';
   constructor(private route: ActivatedRoute, private userServ: UserService) {}
@@ -20,6 +21,7 @@ export class MainPageComponent implements OnInit {
       this.userId = params['id'];
       this.userServ.getUserById(this.userId).subscribe((res) => {
         this.balance = res.balance;
+        this.email = res.emailId;
         this.userName = res.firstName + ' ' + res.lastName;
         this.dob = res.dob;
         this.phNo = res.phNo;

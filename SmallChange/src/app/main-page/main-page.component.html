@@ -1,48 +1,67 @@
-<div>
-  <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <!-- <br /><br />
-  
-  <h1>Name : {{ this.userName }}</h1>
-  <h1>Date Of Birth : {{ this.dob }}</h1>
-  <h1>Ph no. : {{ this.phNo }}</h1>
-  <h1>Balance : {{ this.balance | currency }}</h1>
-  <br /><br /><br /><br /><br /><br /><br /><br /> -->
-  <div class="container d-flex justify-content-center align-items-center">
-    <div class="card">
-      <div class="upper">
-        <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid" />
-      </div>
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
 
-      <div class="user text-center">
-        <div class="profile">
-          <img
-            src="https://www.nicepng.com/png/detail/16-169198_dollar-sign-newer-bodie-green-dollar-sign-png.png"
-            class="rounded-circle"
-            width="80"
-          />
-        </div>
-      </div>
+<section class="vh-00">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-md-12 col-xl-4">
+        <div class="card shadow" style="border-radius: 15px">
+          <div class="card-body text-center">
+            <div class="mt-3 mb-4">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                class="rounded-circle img-fluid"
+                style="width: 100px"
+              />
+            </div>
+            <h4 class="mb-2">{{ this.userName }}</h4>
+            <p class="text-muted mb-4">
+              {{ this.phNo }}<span class="mx-2">|</span>
+              <a href="#!">{{ this.email }}</a>
+            </p>
 
-      <div class="mt-5 text-center">
-        <h4 class="mb-0">{{ this.userName }}</h4>
-        <span class="text-muted d-block mb-2">+91 {{ this.phNo }}</span>
+            <table>
+              <tr>
+                <td>
+                  <button
+                    type="button"
+                    class="btn btn-outline-success btn-rounded btn-lg"
+                    [routerLink]="['/Portfolio', userId]"
+                  >
+                    View Portfolio
+                  </button>
+                </td>
+                <!-- <td>
+                  <button
+                    type="button"
+                    class="btn btn-success btn-rounded"
+                    [routerLink]="['/Preferences', userId]"
+                  >
+                    View Preferences
+                  </button>
+                </td> -->
+              </tr>
+              <tr></tr>
+            </table>
 
-        <button
-          class="btn btn-success btn-sm follow"
-          [routerLink]="['/Portfolio', 1]"
-        >
-          View Portfolio
-        </button>
-
-        <div class="d-flex justify-content-center align-items-center mt-4 px-4">
-          <div class="stats">
-            <h4 class="mb-0">Balance</h4>
-            <span>{{ this.balance | currency }}</span>
+            <div class="d-flex justify-content-between text-center mt-5 mb-2">
+              <div>
+                <p class="mb-2 h5">600$</p>
+                <p class="text-muted mb-0">Total Investment</p>
+              </div>
+              <div class="px-3">
+                <p class="mb-2 h5">200$</p>
+                <p class="text-muted mb-0">Net Profit</p>
+              </div>
+              <div>
+                <p class="mb-2 h5">100$</p>
+                <p class="text-muted mb-0">Current Value</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <app-footer></app-footer>
-</div>
+</section>
+<app-footer></app-footer>

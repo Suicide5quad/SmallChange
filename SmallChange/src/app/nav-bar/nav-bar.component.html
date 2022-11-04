@@ -38,14 +38,6 @@
           <a
             class="nav-link"
             aria-current="page"
-            [routerLink]="['/Home', userId]"
-            >Home</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            aria-current="page"
             [routerLink]="['/Portfolio', userId]"
             >Portfolio</a
           >
@@ -89,10 +81,32 @@
             >Preferences</a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/Login">Logout</a>
-        </li>
       </ul>
+      <div style="float: right">
+        <a
+          class="nav-link dropdown-toggle"
+          aria-current="page"
+          data-bs-toggle="dropdown"
+          href="#"
+          role="button"
+          aria-expanded="false"
+          ><img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+            width="40"
+            height="40"
+            class="rounded-circle"
+        /></a>
+        <ul class="dropdown-menu" style="margin-left: 89%">
+          <li>
+            <a class="dropdown-item" [routerLink]="['/Home', userId]"
+              >Profile</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" [routerLink]="['/Login']">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

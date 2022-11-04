@@ -112,7 +112,7 @@ export class LoginFormComponent implements OnInit {
           a.emailId == this.loginForm.value.userName &&
           a.password == this.loginForm.value.password
         ) {
-          this.router.navigate([`Home`, a.id]);
+          this.router.navigate([`Portfolio`, a.id]);
           localStorage.setItem('currentUser', JSON.stringify(a.emailId));
         } else this.showError = true;
       });
