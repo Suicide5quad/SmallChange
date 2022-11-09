@@ -1,83 +1,86 @@
 <div>
   <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <br /><br />
-  <div class="container">
-    <div *ngIf="!submitted && cashOnHand && cashPower">
-      <h1 id="buyTrade">Place a Buy Trade</h1>
-      <br />
-      <form
-        [formGroup]="buyForm"
-        (ngSubmit)="onSubmit()"
-        class="row g-3 mx-md-5 px-md-5 mx-1 px-1"
-      >
-        <div class="form-group">
-          <label for="asset">Asset Class</label>
-          <select
-            class="form-select"
-            formControlName="assetclass"
-            [(ngModel)]="assetClass"
-            required
-          >
-            <option value="STOCK" selected>Main index stocks</option>
-            <option value="SCCS">Small cap company stocks</option>
-            <option value="IMS">International market stocks</option>
-            <option value="GOVT">Government bonds</option>
-            <option value="CD">Corporate bonds</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="security">Security</label>
-          <select
-            class="form-select"
-            formControlName="securityName"
-            [(ngModel)]="security"
-            required
-          >
-            <ng-container *ngFor="let security of securities">
-              <option
-                *ngIf="security.asset_class == assetClass"
-                value="{{ security.security_name }}"
-                selected
-              >
-                {{ security.security_name }}
-              </option>
-            </ng-container>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="Quantity">Quantity</label>
-          <input
-            type="number"
-            class="form-control"
-            formControlName="quantity"
-            min="1"
-            max="100"
-            [(ngModel)]="Quantity"
-            required
-          />
-
-          <ng-container *ngFor="let trade of securities">
-            <ng-container *ngIf="trade.security_name == security">
-              <p>Target Price :${{ Quantity * trade.price }}</p>
-            </ng-container>
-          </ng-container>
-        </div>
-
+  <ng-container *ngIf="this.loginServ.isLoggedIn">
+    <app-nav-bar></app-nav-bar>
+    <br /><br />
+    <div class="container">
+      <div *ngIf="!submitted && cashOnHand && cashPower">
+        <h1 id="buyTrade">Place a Buy Trade</h1>
         <br />
-        <div class="mb-3" style="text-align: center">
-          <button
-            type="submit"
-            class="btn btn-success"
-            [disabled]="buyForm.invalid"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+        <form
+          [formGroup]="buyForm"
+          (ngSubmit)="onSubmit()"
+          class="row g-3 mx-md-5 px-md-5 mx-1 px-1"
+        >
+          <div class="form-group">
+            <label for="asset">Asset Class</label>
+            <select
+              class="form-select"
+              formControlName="assetclass"
+              [(ngModel)]="assetClass"
+              required
+            >
+              <option value="STOCK" selected>Main index stocks</option>
+              <option value="SCCS">Small cap company stocks</option>
+              <option value="IMS">International market stocks</option>
+              <option value="GOVT">Government bonds</option>
+              <option value="CD">Corporate bonds</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="security">Security</label>
+            <select
+              class="form-select"
+              formControlName="securityName"
+              [(ngModel)]="security"
+              required
+            >
+              <ng-container *ngFor="let security of securities">
+                <option
+                  *ngIf="security.asset_class == assetClass"
+                  value="{{ security.security_name }}"
+                  selected
+                >
+                  {{ security.security_name }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="Quantity">Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="quantity"
+              min="1"
+              max="100"
+              [(ngModel)]="Quantity"
+              required
+            />
+
+            <ng-container *ngFor="let trade of securities">
+              <ng-container *ngIf="trade.security_name == security">
+                <p>Target Price :${{ Quantity * trade.price }}</p>
+              </ng-container>
+            </ng-container>
+          </div>
+
+          <br />
+          <div class="mb-3" style="text-align: center">
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="buyForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-  <br /><br /><br />
+    <br /><br /><br />
+  </ng-container>
+  <app-access-fail></app-access-fail>
   <app-footer></app-footer>
 </div>

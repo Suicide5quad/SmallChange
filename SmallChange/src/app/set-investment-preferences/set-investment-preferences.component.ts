@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../login.service';
 import { Preferences } from '../models/preferences';
 import { PreferencesService } from '../services/preferences.service';
 
@@ -19,7 +20,8 @@ export class SetInvestmentPreferencesComponent implements OnInit {
   constructor(
     private router: Router,
     private preferencesService: PreferencesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public loginServ: LoginService
   ) {
     // update this.preferences.userId here to make it submit it to backend
   }

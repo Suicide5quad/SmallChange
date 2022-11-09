@@ -42,6 +42,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AgGridModule } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { PhonePipe } from './phone';
+import { AccessFailComponent } from './access-fail/access-fail.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { PhonePipe } from './phone';
     PortfolioDialogComponent,
     StockTableComponent,
     PortfolioComponent,
+    AccessFailComponent,
   ],
 
   imports: [

@@ -33,7 +33,7 @@ export class AuthService {
       .pipe(
         map((user: Login) => {
           // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-          user.authdata = window.btoa(username + ':' + password);
+          // user.authdata = window.btoa(username + ':' + password);
           localStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
           return user;

@@ -6,6 +6,7 @@ import { Trade } from 'src/app/models/trade';
 import { TradeService } from '../trade.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { couldStartTrivia } from 'typescript';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-buy-trade',
@@ -33,7 +34,8 @@ export class BuyTradeComponent implements OnInit {
   constructor(
     private tradeServ: TradeService,
     private route: ActivatedRoute,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    public loginServ: LoginService
   ) {}
 
   ngOnInit() {

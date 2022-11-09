@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { AuthService } from '../services/auth.service';
-import { first } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -63,12 +62,6 @@ export class LoginFormComponent implements OnInit {
       dob: new FormControl('', [Validators.required]),
     });
   }
-  // get firstNameFieldRegister(): any {
-  //   return this.registrationForm.get('fistName');
-  // }
-  // get lastNameFieldRegister(): any {
-  //   return this.registrationForm.get('lastName');
-  // }
   get userNameField(): any {
     return this.loginForm.get('userName');
   }
@@ -103,20 +96,16 @@ export class LoginFormComponent implements OnInit {
   loginFormSubmit() {
     this.submitted = true;
     this.loginValid = true;
-    // console.log(this.loginForm.value);
-
-    this.loginService.login().subscribe((data) => {
-      data.find((a: any) => {
-        console.log(a);
-        if (
-          a.emailId == this.loginForm.value.userName &&
-          a.password == this.loginForm.value.password
-        ) {
-          this.router.navigate([`Portfolio`, a.id]);
-          localStorage.setItem('currentUser', JSON.stringify(a.emailId));
-        } else this.showError = true;
+    this.loginService
+      .login(this.loginForm.value.userName, this.loginForm.value.password)
+      .subscribe({
+        next: (data) => {
+          if (data != null) {
+            this.router.navigate([`Portfolio`, data.id]);
+            this.loginService.isLoggedIn = true;
+          } else this.showError = true;
+        },
       });
-    });
   }
 
   registrationFormSubmit() {

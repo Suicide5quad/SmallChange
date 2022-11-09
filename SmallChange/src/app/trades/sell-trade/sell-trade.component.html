@@ -1,40 +1,41 @@
 <div>
   <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <br /><br />
-  <div class="container">
-    <div *ngIf="!submitted && cashOnHand && cashPower">
-      <h1 id="sellTrade">Place a Sell Trade</h1>
-      <br />
-      <form
-        [formGroup]="sellForm"
-        (ngSubmit)="onSubmit()"
-        class="row g-3 mx-md-5 px-md-5 mx-1 px-1"
-      >
-        <div class="form-group">
-          <label for="security">Security</label>
-          <input
-            type="text"
-            class="form-control"
-            name="security"
-            [(ngModel)]="security"
-            formControlName="security"
-            readonly
-          />
-        </div>
-        <div class="form-group">
-          <label for="Quantity">Quantity</label>
-          <input
-            type="number"
-            class="form-control"
-            formControlName="quantity"
-            [(ngModel)]="quantity"
-            min="1"
-            max="100"
-            required
-          />
-        </div>
-        <!-- <div class="form-group">
+  <ng-container *ngIf="this.loginServ.isLoggedIn">
+    <app-nav-bar></app-nav-bar>
+    <br /><br />
+    <div class="container">
+      <div *ngIf="!submitted && cashOnHand && cashPower">
+        <h1 id="sellTrade">Place a Sell Trade</h1>
+        <br />
+        <form
+          [formGroup]="sellForm"
+          (ngSubmit)="onSubmit()"
+          class="row g-3 mx-md-5 px-md-5 mx-1 px-1"
+        >
+          <div class="form-group">
+            <label for="security">Security</label>
+            <input
+              type="text"
+              class="form-control"
+              name="security"
+              [(ngModel)]="security"
+              formControlName="security"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="Quantity">Quantity</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="quantity"
+              [(ngModel)]="quantity"
+              min="1"
+              max="100"
+              required
+            />
+          </div>
+          <!-- <div class="form-group">
           <label for="AccountNumber">Account Number</label>
           <select
             class="form-select"
@@ -47,21 +48,23 @@
             <option value="Acc2">Acc2</option>
           </select>
         </div> -->
-        <br />
-        <div class="mb-3" style="text-align: center">
-          <button
-            type="submit"
-            class="btn btn-success"
-            [disabled]="sellForm.invalid"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+          <br />
+          <div class="mb-3" style="text-align: center">
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="sellForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-  <br /><br /><br />
-  <br />
-  <br /><br /><br />
+    <br /><br /><br />
+    <br />
+    <br /><br /><br />
+  </ng-container>
+  <app-access-fail></app-access-fail>
   <app-footer></app-footer>
 </div>

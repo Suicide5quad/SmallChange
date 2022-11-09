@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { PhonePipe } from '../phone';
+import { LoginService } from '../login.service';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -14,7 +15,11 @@ export class MainPageComponent implements OnInit {
   public email: string = '';
   public dob!: Date;
   public phNo: string = '';
-  constructor(private route: ActivatedRoute, private userServ: UserService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private userServ: UserService,
+    public loginServ: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {

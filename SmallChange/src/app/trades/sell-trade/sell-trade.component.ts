@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/login.service';
 import { Prices } from 'src/app/models/prices';
 import { SellTrade } from 'src/app/models/sellTrade';
 import { Stock } from 'src/app/models/stock';
@@ -28,7 +29,8 @@ export class SellTradeComponent implements OnInit {
   constructor(
     private tradeServ: TradeService,
     private route: ActivatedRoute,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    public loginServ: LoginService
   ) {}
 
   public submitObject: Trade | undefined;
