@@ -36,9 +36,9 @@
                     <button
                       type="button"
                       class="btn btn-outline-success btn-rounded"
-                      [routerLink]="['/Preferences', userId]"
+                      (openDialogEvent)="openDialog($event)"
                     >
-                      View Preferences
+                      View Wallet
                     </button>
                   </td>
                 </tr>

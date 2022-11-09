@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { PhonePipe } from '../phone';
 import { LoginService } from '../login.service';
+import { MatDialog } from '@angular/material/dialog';
+import { WalletComponent } from './wallet/wallet.component';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -18,7 +20,8 @@ export class MainPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userServ: UserService,
-    public loginServ: LoginService
+    public loginServ: LoginService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +35,10 @@ export class MainPageComponent implements OnInit {
         this.phNo = res.phNo;
       });
     });
+  }
+
+  openDialog(data: any) {
+    const dialogRef = this.dialog.open(WalletComponent);
+    dialogRef.componentInstance.data = data;
   }
 }
