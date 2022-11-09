@@ -66,19 +66,19 @@ export class SetInvestmentPreferencesComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
     });
-    this.form.addEventListener(
-      'submit',
-      (event: { preventDefault: () => void; stopPropagation: () => void }) => {
-        this.formValidity = this.form.checkValidity();
+    // this.form.addEventListener(
+    //   'submit',
+    //   (event: { preventDefault: () => void; stopPropagation: () => void }) => {
+    //     this.formValidity = this.form.checkValidity();
 
-        if (!this.formValidity) {
-          event.preventDefault();
-          event.stopPropagation();
-          let button = document.getElementsByTagName('button');
-        }
-        this.form.classList.add('was-validated');
-      },
-      false
-    );
+    //     if (!this.formValidity) {
+    //       event.preventDefault();
+    //       event.stopPropagation();
+    //       let button = document.getElementsByTagName('button');
+    //     }
+    //     this.form.classList.add('was-validated');
+    //   },
+    //   false
+    // );
   }
 }

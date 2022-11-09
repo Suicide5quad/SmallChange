@@ -81,6 +81,8 @@
     </div>
     <br /><br /><br />
   </ng-container>
-  <app-access-fail></app-access-fail>
+  <ng-container *ngIf="!this.loginServ.isLoggedIn">
+    <app-access-fail></app-access-fail>
+  </ng-container>
   <app-footer></app-footer>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Stock } from 'src/app/models/stock';
 import { Trade } from 'src/app/models/trade';
@@ -35,7 +35,8 @@ export class BuyTradeComponent implements OnInit {
     private tradeServ: TradeService,
     private route: ActivatedRoute,
     public datepipe: DatePipe,
-    public loginServ: LoginService
+    public loginServ: LoginService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -91,7 +92,7 @@ export class BuyTradeComponent implements OnInit {
       .subscribe({
         next: (data) => {
           console.log(data);
-          window.location.href = '/Portfolio/' + this.userId;
+          this.router.navigate([`Portfolio`, this.userId]);
         },
       });
   }
