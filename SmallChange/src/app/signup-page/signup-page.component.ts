@@ -14,21 +14,6 @@ export class SignupPageComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 
-  // register() {
-  //   let tags = document.getElementsByTagName('input');
-  //   let credentials = {
-  //     emailId: tags[0].value,
-  //     password: tags[1].value,
-  //     firstName: tags[3].value,
-  //     lastName: tags[4].value,
-  //     dob: tags[5].value,
-  //     phone: tags[6].value
-  //     // investmentrisk: tags[7].value
-  //   }
-  //   console.log(credentials);
-  //   return credentials
-  // }
-
   register() {
     console.log(this.user);
     this.saveUser();

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditComponent } from './edit/edit.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'Home/:id', component: MainPageComponent },
   { path: 'BuyTrade/:id', component: BuyTradeComponent },
   { path: 'SellTrade/:id', component: SellTradeComponent },
+  { path: 'Edit/:id', component: EditComponent },
   { path: '', redirectTo: '/Starter', pathMatch: 'full' },
 ];
 

@@ -9,7 +9,7 @@ import { LoginService } from '../login.service';
   styleUrls: ['./main-page.component.css'],
 })
 export class MainPageComponent implements OnInit {
-  public userId: string = '';
+  public userId: number =0;
   public userName: string = '';
   public balance: number = 0;
   public email: string = '';
