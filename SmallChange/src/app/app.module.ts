@@ -43,6 +43,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { PhonePipe } from './phone';
 import { AccessFailComponent } from './access-fail/access-fail.component';
+import { WalletComponent } from './main-page/wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AccessFailComponent } from './access-fail/access-fail.component';
     StockTableComponent,
     PortfolioComponent,
     AccessFailComponent,
+    WalletComponent,
   ],
 
   imports: [
