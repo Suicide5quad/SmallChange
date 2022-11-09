@@ -44,6 +44,7 @@ import { DatePipe } from '@angular/common';
 import { PhonePipe } from './phone';
 import { AccessFailComponent } from './access-fail/access-fail.component';
 import { WalletComponent } from './main-page/wallet/wallet.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { WalletComponent } from './main-page/wallet/wallet.component';
     PortfolioComponent,
     AccessFailComponent,
     WalletComponent,
+    EditComponent,
   ],
 
   imports: [

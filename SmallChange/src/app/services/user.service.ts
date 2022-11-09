@@ -19,7 +19,7 @@ export class UserService {
     return this.httpClient.post(`${this.baseURL}`, user);
   }
 
-  getUserById(id: string): Observable<User> {
+  getUserById(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.baseURL}/${id}`);
   }
 
