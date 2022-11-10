@@ -4,6 +4,7 @@ import {
   HttpClientTestingModule,
 } from '@angular/common/http/testing';
 import { TradinghistoryComponent } from './tradinghistory.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TradinghistoryComponent', () => {
   let component: TradinghistoryComponent;
@@ -12,7 +13,7 @@ describe('TradinghistoryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TradinghistoryComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
   });
 
@@ -21,6 +22,7 @@ describe('TradinghistoryComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

@@ -44,7 +44,6 @@ import { DatePipe } from '@angular/common';
 import { PhonePipe } from './phone';
 import { AccessFailComponent } from './access-fail/access-fail.component';
 import { EditComponent } from './edit/edit.component';
-
 @NgModule({
   declarations: [
     AppComponent,

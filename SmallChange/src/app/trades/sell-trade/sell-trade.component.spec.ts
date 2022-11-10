@@ -12,8 +12,8 @@ describe('SellTradeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SellTradeComponent],
-      imports: [HttpClientTestingModule, FormsModule,RouterTestingModule],
-      providers: [DatePipe]
+      imports: [HttpClientTestingModule, FormsModule, RouterTestingModule],
+      providers: [DatePipe],
     }).compileComponents();
   });
 
@@ -23,7 +23,7 @@ describe('SellTradeComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

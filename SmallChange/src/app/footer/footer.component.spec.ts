@@ -8,9 +8,8 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
+      declarations: [FooterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -23,5 +22,5 @@ describe('FooterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have title')
+  // it('should have title')
 });

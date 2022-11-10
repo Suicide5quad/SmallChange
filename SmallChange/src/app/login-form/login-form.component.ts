@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
-import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +12,6 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private router: Router,
     private loginService: LoginService,
-    private authenticationService: AuthService,
     private route: ActivatedRoute
   ) {}
 
