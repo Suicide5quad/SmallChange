@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PortfolioDialogComponent } from './portfolio-dialog/portfolio-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { StockHolding } from '../models/stock-holding';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -17,7 +18,8 @@ export class PortfolioComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public dialog: MatDialog,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public loginServ: LoginService
   ) {}
 
   ngOnInit() {

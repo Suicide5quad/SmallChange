@@ -1,116 +1,81 @@
-<!-- <div>
-  <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <br /><br />
-
-  <p>Trading History Details</p>
-
-  <div class="tradehistory">
-    <table>
-      <thead>
-        <tr>
-          <th>Trade Type</th>
-          <th>Assest Class</th>
-          <th>Security</th>
-          <th>Quantity</th>
-          <th>Account Number</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Buy</td>
-          <td>Stock</td>
-          <td>JPMorgan Chase & Co. Capital Stock</td>
-          <td>1000</td>
-          <td>Acc1</td>
-        </tr>
-        <tr>
-          <td>Sell</td>
-          <td>Stock</td>
-          <td>JPMorgan Chase & Co. Capital Stock</td>
-          <td>200</td>
-          <td>Acc2</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <app-footer></app-footer>
-</div> -->
 <div>
   <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <br />
-  <mat-form-field class="options">
-    <mat-select placeholder="Select Filters" [(value)]="selected" #singleSelect>
-      <mat-option value="buy" (click)="setToBuy()">Buy</mat-option>
-      <mat-option value="sell" (click)="setToSell()">Sell</mat-option>
-      <mat-option value="all" (click)="getTrades()">All</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <!-- <mat-radio-group aria-label="Select an option">
-    <mat-radio-button value="buy" (click)="setToBuy()">Buy</mat-radio-button>
-    <mat-radio-button value="sell" (click)="setToSell()">Sell</mat-radio-button>
-    <mat-radio-button value="All" (click)="getTrades()" checked="checked"
-      >All</mat-radio-button
+  <ng-container *ngIf="this.loginServ.isLoggedIn">
+    <app-nav-bar></app-nav-bar>
+    <br />
+    <mat-form-field class="options">
+      <mat-select
+        placeholder="Select Filters"
+        [(value)]="selected"
+        #singleSelect
+      >
+        <mat-option value="buy" (click)="setToBuy()">Buy</mat-option>
+        <mat-option value="sell" (click)="setToSell()">Sell</mat-option>
+        <mat-option value="all" (click)="getTrades()">All</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="standard" class="search-bar">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. amazon"
+        #input
+      />
+    </mat-form-field>
+
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+      *ngIf="dataSource"
     >
-  </mat-radio-group> -->
-  <mat-form-field appearance="standard" class="search-bar">
-    <mat-label>Search</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. amazon"
-      #input
-    />
-  </mat-form-field>
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.security_name }}</td>
+      </ng-container>
 
-  <table
-    mat-table
-    [dataSource]="dataSource"
-    class="mat-elevation-z8"
-    *ngIf="dataSource"
-  >
-    <!-- Position Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.security_name }}</td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef>Code</th>
+        <td mat-cell *matCellDef="let element">{{ element.security_code }}</td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef>Code</th>
-      <td mat-cell *matCellDef="let element">{{ element.security_code }}</td>
-    </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef>Quantity</th>
-      <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
-    </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.direction }}</td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let element">{{ element.direction }}</td>
-    </ng-container>
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Price</th>
-      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
-    </ng-container>
+      <ng-container matColumnDef="asset_class">
+        <th mat-header-cell *matHeaderCellDef>Asset Class</th>
+        <td mat-cell *matCellDef="let element">{{ element.asset_class }}</td>
+      </ng-container>
 
-    <ng-container matColumnDef="asset_class">
-      <th mat-header-cell *matHeaderCellDef>Asset Class</th>
-      <td mat-cell *matCellDef="let element">{{ element.asset_class }}</td>
-    </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">
-        No data matching the filter "{{ input.value }}"
-      </td>
-    </tr>
-  </table>
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="!this.loginServ.isLoggedIn">
+    <app-access-fail></app-access-fail>
+  </ng-container>
+  <app-footer></app-footer>
 </div>

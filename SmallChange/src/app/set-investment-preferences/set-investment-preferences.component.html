@@ -1,135 +1,96 @@
 <div>
   <app-header></app-header>
-  <app-nav-bar></app-nav-bar>
-  <br />
-  <div id="preferences">Investment Preferences</div>
-  <br />
-  <div id="container">
-    <form
-      class="row g-3 needs-validation mx-md-5 px-md-5 mx-1 px-1"
-      novalidate
-      id="formIP"
-    >
-      <div class="mb-2">
-        <label for="purpose" class="form-label"
-          >Investment Purpose <span>*</span></label
-        >
-        <textarea
-          required
-          id="purpose"
-          name="purpose"
-          [(ngModel)]="preferences.purpose"
-          class="form-control"
-          style="height: 100px"
-        ></textarea>
-        <div class="invalid-feedback">
-          Please provide your Investment Purpose.
+  <ng-container *ngIf="this.loginServ.isLoggedIn">
+    <app-nav-bar></app-nav-bar>
+    <br />
+    <div id="preferences">Investment Preferences</div>
+    <br />
+    <div id="container">
+      <form class="row g-3 needs-validation mx-md-5 px-md-5 mx-1 px-1" novalidate id="formIP">
+        <div class="mb-2">
+          <label for="purpose" class="form-label">Investment Purpose <span>*</span></label>
+          <textarea required id="purpose" name="purpose" [(ngModel)]="preferences.purpose" class="form-control"
+            style="height: 100px"></textarea>
+          <div class="invalid-feedback">
+            Please provide your Investment Purpose.
+          </div>
+          <div class="valid-feedback">Looks good!</div>
         </div>
-        <div class="valid-feedback">Looks good!</div>
-      </div>
-      <div class="mb-2">
-        <label for="tolerance" class="form-label"
-          >Risk Tolerance <span>*</span></label
-        >
-        <select
-          class="form-select"
-          id="tolerance"
-          name="tolerance"
-          [(ngModel)]="preferences.tolerance"
-          required
-        >
-          <option selected disabled value="">
-            Select a valid Risk Tolerance Level
-          </option>
-          <option value="CONSERVATIVE">Conservative</option>
-          <option value="BELOW_AVERAGE">Below Average</option>
-          <option value="AVERAGE">Average</option>
-          <option value="ABOVE_AVERAGE">Above Average</option>
-          <option value="AGGRESSIVE">Aggressive</option>
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid Tolerance Level.
+        <div class="mb-2">
+          <label for="tolerance" class="form-label">Risk Tolerance <span>*</span></label>
+          <select class="form-select" id="tolerance" name="tolerance" [(ngModel)]="preferences.tolerance" required>
+            <option selected disabled value="">
+              Select a valid Risk Tolerance Level
+            </option>
+            <option value="CONSERVATIVE">Conservative</option>
+            <option value="BELOW_AVERAGE">Below Average</option>
+            <option value="AVERAGE">Average</option>
+            <option value="ABOVE_AVERAGE">Above Average</option>
+            <option value="AGGRESSIVE">Aggressive</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid Tolerance Level.
+          </div>
+          <div class="valid-feedback">Looks good!</div>
         </div>
-        <div class="valid-feedback">Looks good!</div>
-      </div>
-      <div class="mb-2">
-        <label for="incomeCategory" class="form-label"
-          >Income Category <span>*</span></label
-        >
-        <select
-          class="form-select"
-          id="incomeCategory"
-          name="incomeCategory"
-          [(ngModel)]="preferences.incomeCategory"
-          required
-        >
-          <option selected disabled value="">
-            Select a valid monthly Income Category in Rupees
-          </option>
-          <option value="BelowRs20K">Below 20,000</option>
-          <option value="Rs20K_40K">20,001 - 40,000</option>
-          <option value="Rs40K_60K">40,001 - 60,000</option>
-          <option value="Rs60K_80K">60,001 - 80,000</option>
-          <option value="Rs80K_100K">80,001 - 1,00,000</option>
-          <option value="Rs100K_150K">1,00,001 - 1,50,000</option>
-          <option value="AboveRs150K">Above 1,50,000</option>
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid monthly Income Category.
+        <div class="mb-2">
+          <label for="incomeCategory" class="form-label">Income Category <span>*</span></label>
+          <select class="form-select" id="incomeCategory" name="incomeCategory" [(ngModel)]="preferences.incomeCategory"
+            required>
+            <option selected disabled value="">
+              Select a valid monthly Income Category in Rupees
+            </option>
+            <option value="BelowRs20K">Below 20,000</option>
+            <option value="Rs20K_40K">20,001 - 40,000</option>
+            <option value="Rs40K_60K">40,001 - 60,000</option>
+            <option value="Rs60K_80K">60,001 - 80,000</option>
+            <option value="Rs80K_100K">80,001 - 1,00,000</option>
+            <option value="Rs100K_150K">1,00,001 - 1,50,000</option>
+            <option value="AboveRs150K">Above 1,50,000</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid monthly Income Category.
+          </div>
+          <div class="valid-feedback">Looks good!</div>
         </div>
-        <div class="valid-feedback">Looks good!</div>
-      </div>
-      <div class="mb-2">
-        <label for="duration" class="form-label"
-          >Duration of Investments <span>*</span></label
-        >
-        <select
-          class="form-select"
-          id="duration"
-          name="duration"
-          [(ngModel)]="preferences.duration"
-          required
-        >
-          <option selected disabled value="">
-            Select a valid duration for your investments
-          </option>
-          <option value="Below5Y">Below 5 years</option>
-          <option value="Between5Y_7Y">6 - 7 years</option>
-          <option value="Between7Y_10Y">8 - 10 years</option>
-          <option value="Between10Y_S15Y">11 - 15 years</option>
-          <option value="Above15Y">Above 15 years</option>
-        </select>
-        <div class="invalid-feedback">
-          Please select a valid duration for your investments.
+        <div class="mb-2">
+          <label for="duration" class="form-label">Duration of Investments <span>*</span></label>
+          <select class="form-select" id="duration" name="duration" [(ngModel)]="preferences.duration" required>
+            <option selected disabled value="">
+              Select a valid duration for your investments
+            </option>
+            <option value="Below5Y">Below 5 years</option>
+            <option value="Between5Y_7Y">6 - 7 years</option>
+            <option value="Between7Y_10Y">8 - 10 years</option>
+            <option value="Between10Y_S15Y">11 - 15 years</option>
+            <option value="Above15Y">Above 15 years</option>
+          </select>
+          <div class="invalid-feedback">
+            Please select a valid duration for your investments.
+          </div>
+          <div class="valid-feedback">Looks good!</div>
         </div>
-        <div class="valid-feedback">Looks good!</div>
-      </div>
-      <div class="mb-2">
-        <div class="form-check">
-          <input
-            class="form-check-input"
-            name="checkboxValue"
-            type="checkbox"
-            [(ngModel)]="checkboxValue"
-            id="invalidCheck"
-            required
-          />
-          <label class="form-check-label" for="invalidCheck"
-            >Agree to terms and conditions <span>*</span>
-          </label>
-          <div class="invalid-feedback">You must agree before submitting.</div>
+        <div class="mb-2">
+          <div class="form-check">
+            <input class="form-check-input" name="checkboxValue" type="checkbox" [(ngModel)]="checkboxValue"
+              id="invalidCheck" required />
+            <label class="form-check-label" for="invalidCheck">Agree to terms and conditions <span>*</span>
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="mb-2">
-        <button
-          (click)="setPreferences()"
-          class="btn btn-success"
-          type="submit"
-        >
-          Submit
-        </button>
-      </div>
-    </form>
-  </div>
+        <div class="mb-2">
+          <button (click)="setPreferences()" class="btn btn-success" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!this.loginServ.isLoggedIn">
+    <app-access-fail></app-access-fail>
+  </ng-container>
   <app-footer></app-footer>
 </div>

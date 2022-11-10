@@ -1,67 +1,130 @@
 <app-header></app-header>
-<app-nav-bar></app-nav-bar>
+<ng-container *ngIf="this.loginServ.isLoggedIn">
+  <app-nav-bar></app-nav-bar>
+  <!-- start -->
+  <!-- end -->
+  <section class="vh-00">
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-12 col-xl-4">
+          <div class="card shadow" style="border-radius: 15px">
+            <ng-container *ngIf="!userServ.isWalletOpen">
+              <div class="card-body text-center" style="padding: 3.9rem">
+                <div class="mt-3 mb-4">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
+                    class="rounded-circle img-fluid"
+                    style="width: 100px"
+                  />
+                </div>
+                <h2 class="mb-2">{{ this.userName }}</h2>
+                <h2 class="mb-2">Net worth : {{ this.balance | currency }}</h2>
+                <a aria-current="page" [routerLink]="['/Edit', userId]">
+                  <span style="font-size: 20px">&#x270D;</span> Edit profile</a
+                >
+                <p class="text-muted mb-4">
+                  {{ this.phNo }}<span class="mx-2">|</span>
+                  <a href="#!">{{ this.email }} </a>
+                </p>
 
-<section class="vh-00">
-  <div class="container py-5">
-    <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-12 col-xl-4">
-        <div class="card shadow" style="border-radius: 15px">
-          <div class="card-body text-center">
-            <div class="mt-3 mb-4">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp"
-                class="rounded-circle img-fluid"
-                style="width: 100px"
-              />
-            </div>
-            <h4 class="mb-2">{{ this.userName }}</h4>
-            <p class="text-muted mb-4">
-              {{ this.phNo }}<span class="mx-2">|</span>
-              <a href="#!">{{ this.email }}</a>
-            </p>
-
-            <table>
-              <tr>
-                <td>
+                <table class="mb-4">
+                  <tr>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-outline-success btn-rounded"
+                        [routerLink]="['/Portfolio', userId]"
+                      >
+                        View Portfolio
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-outline-success btn-rounded"
+                        (click)="toggleWallet()"
+                      >
+                        View Wallet
+                      </button>
+                    </td>
+                  </tr>
+                  <tr></tr>
+                </table>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="this.userServ.isWalletOpen">
+              <h1 style="text-align: center; margin: 3rem">Wallet</h1>
+              <h2 style="text-align: center; margin-bottom: 3rem">
+                Balance : {{ this.balance | currency }}
+              </h2>
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
                   <button
-                    type="button"
-                    class="btn btn-outline-success btn-rounded btn-lg"
-                    [routerLink]="['/Portfolio', userId]"
+                    class="nav-link"
+                    aria-current="page"
+                    [ngClass]="{ active: isActive === true }"
+                    (click)="toggleTab()"
                   >
-                    View Portfolio
+                    Add Balance
                   </button>
-                </td>
-                <!-- <td>
+                </li>
+                <li class="nav-item">
                   <button
-                    type="button"
-                    class="btn btn-success btn-rounded"
-                    [routerLink]="['/Preferences', userId]"
+                    class="nav-link"
+                    aria-current="page"
+                    [ngClass]="{ active: isActive === false }"
+                    (click)="toggleTab()"
                   >
-                    View Preferences
+                    Withdraw
                   </button>
-                </td> -->
-              </tr>
-              <tr></tr>
-            </table>
-
-            <div class="d-flex justify-content-between text-center mt-5 mb-2">
-              <div>
-                <p class="mb-2 h5">600$</p>
-                <p class="text-muted mb-0">Total Investment</p>
-              </div>
-              <div class="px-3">
-                <p class="mb-2 h5">200$</p>
-                <p class="text-muted mb-0">Net Profit</p>
-              </div>
-              <div>
-                <p class="mb-2 h5">100$</p>
-                <p class="text-muted mb-0">Current Value</p>
-              </div>
-            </div>
+                </li>
+              </ul>
+              <form
+                [formGroup]="wallet"
+                *ngIf="isActive"
+                style="text-align: center; margin: 3rem 3rem 7.5rem 3rem"
+              >
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Add Amount"
+                    formControlName="addBalance"
+                    class="form-control"
+                  />
+                </div>
+                <div>
+                  <button class="btn btn-success mt-2" (click)="addMoney()">
+                    Add
+                  </button>
+                </div>
+              </form>
+              <form
+                [formGroup]="wallet"
+                *ngIf="!isActive"
+                style="text-align: center; margin: 3rem 3rem 7.5rem 3rem"
+              >
+                <div>
+                  <input
+                    type="number"
+                    placeholder="Withdraw Amount"
+                    class="form-control"
+                    formControlName="removeBalance"
+                  />
+                </div>
+                <div>
+                  <button class="btn btn-success mt-2" (click)="removeMoney()">
+                    Withdraw
+                  </button>
+                </div>
+              </form>
+            </ng-container>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</ng-container>
+<ng-container *ngIf="!this.loginServ.isLoggedIn">
+  <app-access-fail></app-access-fail>
+</ng-container>
 <app-footer></app-footer>

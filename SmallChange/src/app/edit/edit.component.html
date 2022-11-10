@@ -1,0 +1,77 @@
+<div>
+  <app-header></app-header>
+  <app-nav-bar></app-nav-bar>
+  <br />
+  <div class="card-shadow" style="border-radius: 15px; margin-bottom: 7rem">
+    <div class="card-body">
+      <div id="edit">Edit profile</div>
+      <div class="form needs-validation novalidate">
+        <div class="form-group">
+          <label for="firstName" class="label">First Name</label>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            [(ngModel)]="user.firstName"
+            placeholder="Enter your first name"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="label">Last Name</label>
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            [(ngModel)]="user.lastName"
+            class="form-control"
+            placeholder="Enter the last name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="dob" class="label">Date of Birth</label>
+        </div>
+        <div class="form-group">
+          <input
+            type="date"
+            name="dob"
+            id="dob"
+            [(ngModel)]="user.dob"
+            class="form-control"
+            placeholder="Enter your Date of Birth"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phNo" class="label">Phone number</label>
+        </div>
+        <div class="form-group">
+          <input
+            type="tel"
+            name="phNo"
+            id="phNo"
+            [(ngModel)]="user.phNo"
+            pattern="[0-9]{2}-[0-9]{5}-[0-9]{5}"
+            class="form-control"
+            placeholder="Enter the phone number"
+          />
+          <div>
+            <p class="error" id="errorTextPass">
+              Invalid phone number - Check the number you have entered
+            </p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" (click)="updateUser()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

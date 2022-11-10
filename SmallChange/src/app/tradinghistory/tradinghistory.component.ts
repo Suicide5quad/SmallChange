@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from '../login.service';
 import { TradeHistory } from '../models/trade-history';
 import { TradeHistoryService } from '../trade-history.service';
 
@@ -25,7 +26,8 @@ export class TradinghistoryComponent implements OnInit {
 
   constructor(
     private tradeHistoryService: TradeHistoryService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public loginServ: LoginService
   ) {}
 
   ngOnInit(): void {

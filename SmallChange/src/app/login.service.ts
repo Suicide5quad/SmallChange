@@ -7,16 +7,25 @@ import {
 } from '@angular/common/http';
 import { Login } from './models/login';
 import { catchError, Observable, throwError } from 'rxjs';
+import { AuthLogin } from './models/auth-login';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
+  public isLoggedIn = false;
   constructor(private http: HttpClient, private router: Router) {}
-
-  login(): Observable<Login[]> {
+  headers = new HttpHeaders({
+    'Content-type': 'application/json',
+  });
+  login(emailId: String, password: String) {
+    const login = new AuthLogin();
+    login.emailId = emailId;
+    login.password = password;
     return this.http
-      .get<Login[]>('http://localhost:8080/smallchange/users')
+      .post<Login>('http://localhost:8080/smallchange/users/login', login, {
+        headers: this.headers,
+      })
       .pipe(catchError(this.handleError));
   }
 
@@ -35,13 +44,10 @@ export class LoginService {
     logins.password = password;
     logins.phNo = phNo;
     logins.dob = dob;
-    const headers = new HttpHeaders({
-      'Content-type': 'application/json',
-    });
 
     return this.http
       .post<Login>('http://localhost:8080/smallchange/users', logins, {
-        headers: headers,
+        headers: this.headers,
       })
       .pipe(catchError(this.handleError));
   }

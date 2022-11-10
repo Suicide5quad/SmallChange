@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from '../login.service';
 import { Preferences } from '../models/preferences';
 import { PreferencesService } from '../services/preferences.service';
 
@@ -19,7 +20,8 @@ export class SetInvestmentPreferencesComponent implements OnInit {
   constructor(
     private router: Router,
     private preferencesService: PreferencesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public loginServ: LoginService
   ) {
     // update this.preferences.userId here to make it submit it to backend
   }
@@ -64,19 +66,19 @@ export class SetInvestmentPreferencesComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
     });
-    this.form.addEventListener(
-      'submit',
-      (event: { preventDefault: () => void; stopPropagation: () => void }) => {
-        this.formValidity = this.form.checkValidity();
+    // this.form.addEventListener(
+    //   'submit',
+    //   (event: { preventDefault: () => void; stopPropagation: () => void }) => {
+    //     this.formValidity = this.form.checkValidity();
 
-        if (!this.formValidity) {
-          event.preventDefault();
-          event.stopPropagation();
-          let button = document.getElementsByTagName('button');
-        }
-        this.form.classList.add('was-validated');
-      },
-      false
-    );
+    //     if (!this.formValidity) {
+    //       event.preventDefault();
+    //       event.stopPropagation();
+    //       let button = document.getElementsByTagName('button');
+    //     }
+    //     this.form.classList.add('was-validated');
+    //   },
+    //   false
+    // );
   }
 }
