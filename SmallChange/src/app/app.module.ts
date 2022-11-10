@@ -43,7 +43,6 @@ import { AgGridModule } from 'ag-grid-angular';
 import { DatePipe } from '@angular/common';
 import { PhonePipe } from './phone';
 import { AccessFailComponent } from './access-fail/access-fail.component';
-import { WalletComponent } from './main-page/wallet/wallet.component';
 import { EditComponent } from './edit/edit.component';
 
 @NgModule({
@@ -72,7 +71,6 @@ import { EditComponent } from './edit/edit.component';
     StockTableComponent,
     PortfolioComponent,
     AccessFailComponent,
-    WalletComponent,
     EditComponent,
   ],
 
