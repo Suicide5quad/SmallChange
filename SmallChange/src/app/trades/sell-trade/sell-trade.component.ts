@@ -26,6 +26,7 @@ export class SellTradeComponent implements OnInit {
   errorMessage: string = '';
   sellForm!: FormGroup;
   userId: any;
+  isLoggedIn: boolean = false;
   constructor(
     private tradeServ: TradeService,
     private route: ActivatedRoute,
@@ -42,6 +43,11 @@ export class SellTradeComponent implements OnInit {
     });
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
+      if (
+        window.localStorage.getItem('currentUser') === this.userId.toString()
+      ) {
+        this.isLoggedIn = true;
+      }
     });
     this.tradeServ.newTrade1.subscribe((res) => {
       // console.log(res);

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<ng-container *ngIf="this.loginServ.isLoggedIn">
+<ng-container *ngIf="isLoggedIn">
   <app-nav-bar></app-nav-bar>
   <!-- start -->
   <!-- end -->
@@ -93,6 +93,13 @@
                   />
                 </div>
                 <div>
+                  <button
+                    class="btn btn-primary mt-2"
+                    style="margin-right: 1rem"
+                    (click)="toggleWallet()"
+                  >
+                    Go to Profile
+                  </button>
                   <button class="btn btn-success mt-2" (click)="addMoney()">
                     Add
                   </button>
@@ -112,9 +119,17 @@
                   />
                 </div>
                 <div>
-                  <button class="btn btn-success mt-2" (click)="removeMoney()">
+                  <button
+                    class="btn btn-primary mt-2"
+                    style="margin-right: 1rem"
+                    (click)="toggleWallet()"
+                  >
+                    Go to Profile
+                  </button>
+                  <button class="btn btn-danger mt-2" (click)="removeMoney()">
                     Withdraw
                   </button>
+                  <span> </span>
                 </div>
               </form>
             </ng-container>
@@ -124,7 +139,7 @@
     </div>
   </section>
 </ng-container>
-<ng-container *ngIf="!this.loginServ.isLoggedIn">
+<ng-container *ngIf="!isLoggedIn">
   <app-access-fail></app-access-fail>
 </ng-container>
 <app-footer></app-footer>

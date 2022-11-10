@@ -31,6 +31,7 @@ export class BuyTradeComponent implements OnInit {
   userId: number = 0;
   buyForm!: FormGroup;
   portfolio: any;
+  isLoggedIn: boolean = false;
   constructor(
     private tradeServ: TradeService,
     private route: ActivatedRoute,
@@ -49,6 +50,11 @@ export class BuyTradeComponent implements OnInit {
     this.getPortfolioDetails();
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
+      if (
+        window.localStorage.getItem('currentUser') === this.userId.toString()
+      ) {
+        this.isLoggedIn = true;
+      }
     });
   }
 

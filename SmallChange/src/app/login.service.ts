@@ -13,7 +13,6 @@ import { AuthLogin } from './models/auth-login';
   providedIn: 'root',
 })
 export class LoginService {
-  public isLoggedIn = false;
   constructor(private http: HttpClient, private router: Router) {}
   headers = new HttpHeaders({
     'Content-type': 'application/json',

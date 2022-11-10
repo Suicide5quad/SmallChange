@@ -15,6 +15,7 @@ import { LoginService } from '../login.service';
 export class PortfolioComponent implements OnInit {
   public userPortfolio!: UserPortfolio;
   public userId: string = '';
+  isLoggedIn: boolean = false;
   constructor(
     private dataService: DataService,
     public dialog: MatDialog,
@@ -25,6 +26,11 @@ export class PortfolioComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
+      if (
+        window.localStorage.getItem('currentUser') === this.userId.toString()
+      ) {
+        this.isLoggedIn = true;
+      }
     });
     this.userPortfolio = this.dataService.getPortfolio(this.userId);
   }

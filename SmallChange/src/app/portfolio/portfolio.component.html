@@ -1,6 +1,6 @@
 <div>
   <app-header></app-header>
-  <ng-container *ngIf="this.loginServ.isLoggedIn">
+  <ng-container *ngIf="isLoggedIn">
     <app-nav-bar></app-nav-bar>
     <br /><br />
 
@@ -32,7 +32,7 @@
     </mat-tab-group>
     <br />
   </ng-container>
-  <ng-container *ngIf="!this.loginServ.isLoggedIn">
+  <ng-container *ngIf="!isLoggedIn">
     <app-access-fail></app-access-fail>
   </ng-container>
   <app-footer></app-footer>

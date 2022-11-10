@@ -16,6 +16,7 @@ export class SetInvestmentPreferencesComponent implements OnInit {
   preferences: Preferences = new Preferences();
 
   checkboxValue: boolean = false;
+  isLoggedIn: boolean = false;
 
   constructor(
     private router: Router,
@@ -65,6 +66,11 @@ export class SetInvestmentPreferencesComponent implements OnInit {
     this.form = document.querySelector('.needs-validation');
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
+      if (
+        window.localStorage.getItem('currentUser') === this.userId.toString()
+      ) {
+        this.isLoggedIn = true;
+      }
     });
     // this.form.addEventListener(
     //   'submit',

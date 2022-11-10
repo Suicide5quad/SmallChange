@@ -23,6 +23,7 @@ export class TradinghistoryComponent implements OnInit {
     'price',
     'asset_class',
   ];
+  isLoggedIn: boolean = false;
 
   constructor(
     private tradeHistoryService: TradeHistoryService,
@@ -33,6 +34,11 @@ export class TradinghistoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
+      if (
+        window.localStorage.getItem('currentUser') === this.userId.toString()
+      ) {
+        this.isLoggedIn = true;
+      }
     });
     this.getTrades();
   }

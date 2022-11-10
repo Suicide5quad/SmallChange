@@ -60,6 +60,7 @@ export class MainPageComponent implements OnInit {
   public removeBalance: number = 0;
   public phNo: string = '';
   isActive: boolean = true;
+  isLoggedIn = false
   constructor(
     private route: ActivatedRoute,
     public userServ: UserService,
@@ -71,6 +72,10 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.userId = params['id'];
+      if(window.localStorage.getItem('currentUser') === this.userId.toString())
+        {
+          this.isLoggedIn = true
+        }
       this.userServ.getUserById(this.userId).subscribe((res) => {
         this.balance = res.balance;
         this.email = res.emailId;

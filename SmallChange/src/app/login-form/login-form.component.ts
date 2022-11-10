@@ -101,8 +101,8 @@ export class LoginFormComponent implements OnInit {
       .subscribe({
         next: (data) => {
           if (data != null) {
+            window.localStorage.setItem('currentUser', '' + data.id);
             this.router.navigate([`Portfolio`, data.id]);
-            this.loginService.isLoggedIn = true;
           } else this.showError = true;
         },
       });

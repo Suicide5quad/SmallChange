@@ -9,7 +9,7 @@ import { LoginService } from '../login.service';
 })
 export class NavBarComponent implements OnInit {
   logout() {
-    this.loginServ.isLoggedIn = false;
+    window.localStorage.removeItem('currentUser');
     this.router.navigate([`Login`]);
   }
   constructor(
