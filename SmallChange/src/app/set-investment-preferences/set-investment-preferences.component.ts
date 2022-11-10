@@ -39,6 +39,7 @@ export class SetInvestmentPreferencesComponent implements OnInit {
     this.addNewPreference(this.preferences);
     // this.updatePreference(this.preferences);
     alert('Your investment preferences have been successfully saved!');
+    this.form.refresh();
     this.router.navigate(['Home', this.userId]);
   }
 
@@ -54,12 +55,14 @@ export class SetInvestmentPreferencesComponent implements OnInit {
   }
 
   addNewPreference(preference: Preferences) {
-    this.preferencesService.addPreference(preference).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (error) => console.log(error)
-    );
+    this.route.params.subscribe((params) => {
+      this.preferencesService.addPreference(params['id'], preference).subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (error) => console.log(error)
+      );
+    });
   }
 
   ngOnInit(): void {
