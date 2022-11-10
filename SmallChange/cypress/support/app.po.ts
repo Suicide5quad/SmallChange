@@ -7,6 +7,16 @@ export default class AppPage {
         cy.get('p').should('contain.text', title);
     }
 
+    checkTitleFor(title:string)
+    {
+        cy.get('h2').should('contain.text',title)
+    }
+
+    checkALink(title:string)
+    {
+        cy.get('a').should('contain.text',title)
+    }
+
     clickAboutLink() {
         cy.get('app-root nav a').contains('About', {timeout: 15000}).click();   
     }

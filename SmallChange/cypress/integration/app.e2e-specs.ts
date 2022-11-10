@@ -18,10 +18,16 @@ describe('My First Test', () => {
     app.checkTitle('Trading for beginners made easy');
   });
 
-  it('should Contain Trading Message', () => {
+  it('should Contain Welcome to small change message', () => {
     app.navigate();
-    app.checkTitle('Welcome to SmallChange');
+    app.checkTitleFor('Welcome to SmallChange');
   });
+
+  it('should Contain specified url', ()=> {
+
+    app.navigate();
+    app.checkALink('Get Started');
+  })
 })
 
 
