@@ -5,7 +5,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { AuthGuard } from './services/auth.guard';
 import { SetInvestmentPreferencesComponent } from './set-investment-preferences/set-investment-preferences.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { BuyTradeComponent } from './trades/buy-trade/buy-trade.component';
