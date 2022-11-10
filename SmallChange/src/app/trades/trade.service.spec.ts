@@ -67,7 +67,9 @@ describe('TradeService', () => {
   //       quantity: 10,
   //       accNumber: 'acc1',
   //     };
-  //     service.placeBuyTrade(submitObject).subscribe((data) => (trade = data));
+  //     service
+  //       .placeBuyTrade(1, submitObject)
+  //       .subscribe((data) => (trade = data));
   //     console.log(trade);
   //     const req = httpTestingController.expectOne('http://localhost:4000/buy');
   //     // Assert that the request is a GET.

@@ -22,5 +22,12 @@ describe('FooterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should have title')
+  it('should contain the footer text', () => {
+    const fixture = TestBed.createComponent(FooterComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('.footer').textContent).toContain(
+      'Copyright'
+    );
+  });
 });

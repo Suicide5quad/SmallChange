@@ -1,5 +1,6 @@
 .container {
   width: 50%;
+  margin: 3.5rem auto;
 }
 
 #sellTrade {

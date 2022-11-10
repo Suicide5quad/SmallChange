@@ -13,7 +13,7 @@ export class PreferencesService {
   constructor(private httpClient: HttpClient) {}
 
   addPreference(id: String, preference: Preferences): Observable<Object> {
-    return this.httpClient.post(`${this.baseURL}+ ${id} `, preference);
+    return this.httpClient.post(`${this.baseURL}` + '/' + id, preference);
   }
 
   getPreferenceByPreferenceId(id: number): Observable<Preferences> {
